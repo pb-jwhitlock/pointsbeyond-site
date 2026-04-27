@@ -211,40 +211,32 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 | Supporting pages (contact, privacy, terms, 3× service) | ✅ |
 | Schema: FAQPage, ProfessionalService, LocalBusiness, Service | ✅ |
 | Sitemap + robots.txt | ✅ |
-| Formspree wired (`xnjlyknn`) | ✅ |
+| Contact form → GHL webhook (JSON fetch) | ✅ |
 | GitHub repo `pb-jwhitlock/pointsbeyond-site` created | ✅ |
-| Initial commit pushed to `main` | ✅ |
 | GitHub Actions deploy workflow | ✅ — triggers on push to main |
-| GitHub Pages enabled on new repo | ❌ — next step |
-| `pointsbeyond.ai` pointed at new repo | ❌ — after Pages enabled |
-| Old repos archived | ❌ — after DNS confirmed |
+| GitHub Pages enabled on new repo | ✅ |
+| `pointsbeyond.ai` live on new Astro site | ✅ — HTTPS enforced |
+| Old repos archived | ✅ — `points-beyond-frontend-1`, `points-beyond` archived; Pages disabled |
 | Calendar embed (contact page) | ❌ — placeholder in place, add when ready |
 | Favicon | ⚠️ — logo files copied but not rendering in browser; revisit post-launch |
-| Terms page attorney review | ⚠️ — [REVIEW] markers removed; content is draft, get sign-off before cutover |
+| Terms page attorney review | ⚠️ — draft content, needs attorney sign-off |
 
-**Live site**: still `points-beyond-frontend-1` (plain HTML). New site is built and pushed but Pages not yet enabled.
+**Live site**: https://pointsbeyond.ai — Astro 6 rebuild, fully deployed.
 
 ## Last Session Summary (April 27, 2026)
 
-- Built entire `pointsbeyond-site` from scratch in one session: Astro 6 project, all homepage sections (Hero → ContactForm), all supporting pages, full schema/SEO, sitemap, GitHub Actions workflow
-- Key design decisions made during build: section padding reduced to 80px (from spec'd 120px) for visual balance; hero rule padding symmetry enforced (80px above = 80px below); soundwave SVG mark added to Hero (five arc fans, left curves up / right curves down, center anchor dot); testimonial quotes capped at 3 lines via `-webkit-line-clamp`; FAQ uses `<details>/<summary>` — no JS
-- Formspree ID `xnjlyknn` configured; repo `pb-jwhitlock/pointsbeyond-site` created and initial commit pushed; deploy workflow queued on push
+- Built entire `pointsbeyond-site` from scratch: Astro 6 project, all homepage sections (Hero → ContactForm), all supporting pages, full schema/SEO, sitemap, GitHub Actions workflow
+- Switched contact form from Formspree to GHL webhook (`formConfig.endpoint` in config.ts) using fetch-based JSON submission with inline success/error states
+- Completed full cutover: GitHub Pages enabled, custom domain `pointsbeyond.ai` set, HTTPS enforced, old repos (`points-beyond-frontend-1`, `points-beyond`) archived and Pages disabled
 
 ## Next Steps
 
-**Immediate — Stage 7 cutover (do in order):**
-1. Enable GitHub Pages on `pb-jwhitlock/pointsbeyond-site`: Settings → Pages → Source: **GitHub Actions**
-2. Set custom domain to `pointsbeyond.ai`
-3. Wait for DNS propagation and HTTPS certificate provisioning
-4. Confirm site loads at `https://pointsbeyond.ai`
-5. Disable Pages on `pb-jwhitlock/points-beyond-frontend-1`
-6. Archive (do not delete): `points-beyond-frontend-1`, `points-beyond` (old Astro rebuild)
-
-**Soon after launch:**
-- Add calendar embed to `/contact/` (GHL calendar, Calendly, etc. — slot is ready)
+**Soon:**
+- Add calendar embed to `/contact/` (GHL calendar, Calendly, etc. — slot is ready in contact.astro)
 - Add chat widget embed to `Layout.astro` (slot is ready near `</body>`)
-- Expand service pages from placeholder to full copy
+- Expand service pages from placeholder to full copy (`/services/voice-ai/`, `/services/reputation/`, `/services/aeo-seo/`)
 - Resolve favicon (Points Beyond dark mark — files in `public/` but browser not picking up)
+- Terms page attorney sign-off before treating as final
 
 ## Known Issues / Notes
 
