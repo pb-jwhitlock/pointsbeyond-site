@@ -11,14 +11,7 @@ import { formConfig, siteConfig } from '../data/config';
       <p class="contact-intro">Fill out the form and we'll reach out within one business day to schedule your free strategy call. No pitch — just a clear look at where you're losing leads and what it would take to fix it.</p>
     </div>
 
-    <form
-      class="contact-form"
-      action={formConfig.endpoint}
-      method="POST"
-    >
-      <!-- Formspree helpers -->
-      <input type="hidden" name="_subject" value={`New inquiry — ${siteConfig.name}`} />
-      <input type="hidden" name="_next" value={`${siteConfig.url}/contact/?sent=true`} />
+    <form class="contact-form" id="contact-form" novalidate>
 
       <div class="form-row form-row-2">
         <div class="form-field">
@@ -114,10 +107,64 @@ import { formConfig, siteConfig } from '../data/config';
       </div>
 
       <div class="form-submit">
-        <button type="submit" class="btn-primary">Send message</button>
+        <button type="submit" class="btn-primary" id="submit-btn">Send message</button>
         <p class="form-note">We respond within one business day.</p>
       </div>
+
+      <p class="form-success" id="form-success" hidden>
+        Message sent — we'll be in touch within one business day.
+      </p>
+      <p class="form-error" id="form-error" hidden>
+        Something went wrong. Please email us at <a href="mailto:info@pointsbeyond.ai">info@pointsbeyond.ai</a>.
+      </p>
     </form>
+
+    <script define:vars={{ endpoint: formConfig.endpoint }}>
+      const form = document.getElementById('contact-form');
+      const btn = document.getElementById('submit-btn');
+      const success = document.getElementById('form-success');
+      const error = document.getElementById('form-error');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        success.hidden = true;
+        error.hidden = true;
+
+        const data = {
+          name: form.name.value,
+          email: form.email.value,
+          phone: form.phone.value,
+          website: form.website.value,
+          services: Array.from(form.querySelectorAll('input[name="service[]"]:checked')).map(el => el.value).join(', '),
+          message: form.message.value,
+          sms_consent: form.sms_consent.checked ? 'yes' : 'no',
+          source: window.location.href,
+        };
+
+        try {
+          const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          if (res.ok) {
+            form.reset();
+            success.hidden = false;
+            btn.textContent = 'Send message';
+            btn.disabled = false;
+          } else {
+            throw new Error('Non-OK response');
+          }
+        } catch {
+          error.hidden = false;
+          btn.textContent = 'Send message';
+          btn.disabled = false;
+        }
+      });
+    </script>
 
   </div>
 </section>

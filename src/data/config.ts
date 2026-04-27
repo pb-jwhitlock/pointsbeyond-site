@@ -31,7 +31,7 @@ export const siteConfig = {
 // ---------------------------------------------------------------------------
 export const formConfig = {
   // Replace with your Formspree form ID after signing up at formspree.io
-  endpoint: "https://formspree.io/f/xnjlyknn",
+  endpoint: "https://services.leadconnectorhq.com/hooks/YBRZyZ5mSnV8lIZ6dAJS/webhook-trigger/14a6d27f-b488-4782-b933-c80d9364758c",
   method: "POST" as const,
 } as const;
 
