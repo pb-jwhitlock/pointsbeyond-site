@@ -80,9 +80,10 @@ Inspired by Subduxion (subduxion.com). Key principles:
 
 ### Mobile Padding Rules
 
-- **Section padding**: 120px top/bottom desktop → 64px mobile
-- **Hero top**: 60px desktop → 32px mobile
+- **Section padding**: 80px top/bottom desktop → 48px mobile (revised down from 120px/64px during build for visual balance)
+- **Hero top**: 60px desktop → 32px mobile; hero `padding-bottom: 0` (rule sits flush at bottom, section padding below provides gap)
 - **Card internal padding**: 24px desktop → 16px mobile
+- **Section header margin-bottom**: `3rem` — consistent across all sections
 
 ## Service Positioning & Pricing
 
@@ -200,9 +201,56 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 4. Disable Pages on `pb-jwhitlock/points-beyond-frontend-1`
 5. Archive (do not delete): `points-beyond-frontend-1`, `points-beyond` (old Astro rebuild)
 
+## Current Status (April 27, 2026)
+
+| Item | Status |
+|---|---|
+| Astro 6 project scaffolded | ✅ |
+| Layout, Header, Footer | ✅ |
+| All 7 homepage components | ✅ |
+| Supporting pages (contact, privacy, terms, 3× service) | ✅ |
+| Schema: FAQPage, ProfessionalService, LocalBusiness, Service | ✅ |
+| Sitemap + robots.txt | ✅ |
+| Formspree wired (`xnjlyknn`) | ✅ |
+| GitHub repo `pb-jwhitlock/pointsbeyond-site` created | ✅ |
+| Initial commit pushed to `main` | ✅ |
+| GitHub Actions deploy workflow | ✅ — triggers on push to main |
+| GitHub Pages enabled on new repo | ❌ — next step |
+| `pointsbeyond.ai` pointed at new repo | ❌ — after Pages enabled |
+| Old repos archived | ❌ — after DNS confirmed |
+| Calendar embed (contact page) | ❌ — placeholder in place, add when ready |
+| Favicon | ⚠️ — logo files copied but not rendering in browser; revisit post-launch |
+| Terms page attorney review | ⚠️ — [REVIEW] markers removed; content is draft, get sign-off before cutover |
+
+**Live site**: still `points-beyond-frontend-1` (plain HTML). New site is built and pushed but Pages not yet enabled.
+
+## Last Session Summary (April 27, 2026)
+
+- Built entire `pointsbeyond-site` from scratch in one session: Astro 6 project, all homepage sections (Hero → ContactForm), all supporting pages, full schema/SEO, sitemap, GitHub Actions workflow
+- Key design decisions made during build: section padding reduced to 80px (from spec'd 120px) for visual balance; hero rule padding symmetry enforced (80px above = 80px below); soundwave SVG mark added to Hero (five arc fans, left curves up / right curves down, center anchor dot); testimonial quotes capped at 3 lines via `-webkit-line-clamp`; FAQ uses `<details>/<summary>` — no JS
+- Formspree ID `xnjlyknn` configured; repo `pb-jwhitlock/pointsbeyond-site` created and initial commit pushed; deploy workflow queued on push
+
+## Next Steps
+
+**Immediate — Stage 7 cutover (do in order):**
+1. Enable GitHub Pages on `pb-jwhitlock/pointsbeyond-site`: Settings → Pages → Source: **GitHub Actions**
+2. Set custom domain to `pointsbeyond.ai`
+3. Wait for DNS propagation and HTTPS certificate provisioning
+4. Confirm site loads at `https://pointsbeyond.ai`
+5. Disable Pages on `pb-jwhitlock/points-beyond-frontend-1`
+6. Archive (do not delete): `points-beyond-frontend-1`, `points-beyond` (old Astro rebuild)
+
+**Soon after launch:**
+- Add calendar embed to `/contact/` (GHL calendar, Calendly, etc. — slot is ready)
+- Add chat widget embed to `Layout.astro` (slot is ready near `</body>`)
+- Expand service pages from placeholder to full copy
+- Resolve favicon (Points Beyond dark mark — files in `public/` but browser not picking up)
+
 ## Known Issues / Notes
 
-- Formspree form ID is a placeholder — replace `REPLACE_WITH_FORM_ID` in `config.ts` after signing up
-- SMS consent checkbox must include TCPA-compliant language (already in ContactForm.astro)
 - `astro.config.mjs` uses `base: '/'` for the apex domain — do not change to a subpath
-- Service pages (`/services/*`) are placeholders for launch — add full copy after homepage is live
+- Service pages (`/services/*`) are placeholder pages — crawlable with real schema, full copy TK
+- SMS consent checkbox includes TCPA-compliant language in `ContactForm.astro`
+- `siteConfig.email` in `config.ts` is `info@pointsbeyond.ai` — used in privacy + terms pages
+- Terms page is a working draft — reviewed for [REVIEW] markers this session, needs attorney sign-off before cutover
+- Favicon files in `public/`: `favicon-logo.jpg` (original), `favicon-32.png`, `favicon-16.png`, `apple-touch-icon.png` — browser not rendering; revisit post-launch
