@@ -1,0 +1,225 @@
+---
+import { floorMonthlyLabel } from '../data/pricing';
+---
+
+<section class="hero">
+  <div class="container hero-inner">
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">AI Systems for Small Business</p>
+
+      <h1 class="hero-headline">
+        Never Miss a Lead.<br />
+        Be the Answer<br />
+        AI Delivers.
+      </h1>
+
+      <p class="hero-sub">
+        Points Beyond AI builds the systems that answer every call, generate consistent Google reviews, and put your business in front of customers searching on ChatGPT, Google AI Overview, and Perplexity — all running automatically in the background while you work.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn-primary">Book a Free Strategy Call</a>
+        <a href="/#process" class="hero-link-secondary">See how it works →</a>
+      </div>
+
+      <p class="hero-note">{floorMonthlyLabel} &mdash; no long-term contracts required.</p>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <svg
+        class="hero-mark"
+        viewBox="0 0 320 320"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Left arcs: curve upward, faintest to strongest -->
+        <path d="M 60 160 Q 110 130 160 160" fill="none" stroke="#2e1f7a" stroke-width="1.2" stroke-linecap="round" opacity="0.25"/>
+        <path d="M 60 160 Q 110 110 160 160" fill="none" stroke="#2e1f7a" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+        <path d="M 60 160 Q 110 90 160 160"  fill="none" stroke="#2e1f7a" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+        <path d="M 60 160 Q 110 70 160 160"  fill="none" stroke="#2e1f7a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+        <path d="M 60 160 Q 110 50 160 160"  fill="none" stroke="#2e1f7a" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/>
+
+        <!-- Right arcs: curve downward, mirrored -->
+        <path d="M 160 160 Q 210 190 260 160" fill="none" stroke="#2e1f7a" stroke-width="1.2" stroke-linecap="round" opacity="0.25"/>
+        <path d="M 160 160 Q 210 210 260 160" fill="none" stroke="#2e1f7a" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+        <path d="M 160 160 Q 210 230 260 160" fill="none" stroke="#2e1f7a" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+        <path d="M 160 160 Q 210 250 260 160" fill="none" stroke="#2e1f7a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+        <path d="M 160 160 Q 210 270 260 160" fill="none" stroke="#2e1f7a" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/>
+
+        <!-- Center anchor -->
+        <circle cx="160" cy="160" r="3.5" fill="#2e1f7a"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- Accent rule below hero content -->
+  <div class="hero-rule-wrap container">
+    <div class="hero-rule"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 0;
+    background: var(--color-bg);
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Content                                                              */
+  /* ------------------------------------------------------------------ */
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+    max-width: none;
+  }
+
+  .hero-headline {
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-sub {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 54ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-link-secondary {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.15s ease;
+  }
+
+  .hero-link-secondary:hover {
+    color: var(--color-accent);
+  }
+
+  .hero-note {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    max-width: none;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Bottom accent rule                                                   */
+  /* ------------------------------------------------------------------ */
+  .hero-rule-wrap {
+    margin-top: 80px;
+  }
+
+  .hero-rule {
+    height: 1px;
+    background: var(--color-border);
+    width: 100%;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Hero mark                                                            */
+  /* ------------------------------------------------------------------ */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-mark {
+    width: 480px;
+    height: 480px;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tablet                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 1024px) {
+    .hero-inner {
+      grid-template-columns: 1fr 240px;
+      gap: 3rem;
+    }
+
+    .hero-mark {
+      width: 240px;
+      height: 240px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-headline {
+      font-size: clamp(38px, 8vw, 64px);
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+      display: none;
+    }
+
+    .hero {
+      padding-top: 32px;
+      padding-bottom: 0;
+    }
+
+    .hero-rule-wrap {
+      margin-top: 48px;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+  }
+
+  @media (max-width: 414px) {
+    .hero-headline {
+      font-size: clamp(34px, 9vw, 52px);
+    }
+  }
+
+  @media (max-width: 375px) {
+    .hero-headline {
+      font-size: 34px;
+    }
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import PainPoints from '../components/PainPoints.astro';
+import Services from '../components/Services.astro';
+import Process from '../components/Process.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ, { faqs } from '../components/FAQ.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a,
+    },
+  })),
+};
+---
+
+<Layout
+  title="Points Beyond AI — AI Voice Agents, Reputation Management & AEO for Small Businesses"
+  description="Points Beyond AI helps small businesses capture every lead with 24/7 AI voice agents, Google review automation, and AI search optimization. Fairfax County, VA."
+  schema={faqSchema}
+>
+  <Hero />
+  <PainPoints />
+  <Services />
+  <Process />
+  <Testimonials />
+  <FAQ />
+  <ContactForm />
+</Layout>

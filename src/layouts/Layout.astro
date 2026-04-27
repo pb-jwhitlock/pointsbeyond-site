@@ -1,0 +1,339 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../data/config';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  schema?: object | object[];
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  image = `${siteConfig.url}/og-image.png`,
+  canonical,
+  schema,
+} = Astro.props;
+
+const canonicalURL = canonical ?? `${siteConfig.url}${Astro.url.pathname}`;
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": `${siteConfig.url}/#organization`,
+      "name": siteConfig.name,
+      "url": siteConfig.url,
+      "logo": `${siteConfig.url}/favicon.svg`,
+      "image": `${siteConfig.url}/og-image.png`,
+      "description": siteConfig.description,
+      "founder": {
+        "@type": "Person",
+        "name": siteConfig.founder,
+        "jobTitle": "Founder",
+        "url": siteConfig.social.linkedin,
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": siteConfig.location.city,
+        "addressRegion": siteConfig.location.state,
+        "addressCountry": siteConfig.location.country,
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Washington, D.C." },
+        { "@type": "State", "name": "Virginia" },
+        { "@type": "Country", "name": "United States" },
+      ],
+      "serviceType": [
+        "AI Voice Agents",
+        "Reputation Management",
+        "Answer Engine Optimization",
+        "Search Engine Optimization",
+      ],
+      "sameAs": [siteConfig.social.linkedin],
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Schema: Organization + LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+
+    <!-- Page-specific schema -->
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Google Fonts: Urbanist + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- CHAT WIDGET SLOT: paste your chat embed script here (GHL, Intercom, Crisp, Tidio, etc.) -->
+  </body>
+</html>
+
+<style is:global>
+  /* ------------------------------------------------------------------ */
+  /* CSS Custom Properties                                                */
+  /* ------------------------------------------------------------------ */
+  :root {
+    /* Brand */
+    --color-primary: #2e1f7a;
+    --color-primary-dark: #1e1450;
+    --color-primary-hover: #251968;
+
+    /* Light section backgrounds */
+    --color-bg: #ffffff;
+    --color-surface: #f8f9fa;
+    --color-text: #0f1e2e;
+    --color-text-muted: #4a5568;
+    --color-border: #e2e4e6;
+
+    /* Card variants (light) */
+    --color-card-bg: #f8f9fa;
+    --color-card-border: #e2e4e6;
+    --color-card-hover: #f0f0f5;
+
+    /* Accent */
+    --color-accent: #2e1f7a;
+    --color-accent-rgb: 46, 31, 122;
+
+    /* Dark section variants (Process section + Footer) */
+    --color-dark-bg: #0e0e10;
+    --color-dark-text: #f5f5f5;
+    --color-dark-text-muted: #a0a0b0;
+    --color-dark-card-bg: #18181c;
+    --color-dark-border: #2a2a35;
+
+    /* Typography scale */
+    --font-primary: 'Urbanist', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+
+    /* Spacing */
+    --section-padding: 80px;
+    --section-padding-mobile: 64px;
+    --container-max: 1200px;
+    --container-padding: 2rem;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Reset                                                                */
+  /* ------------------------------------------------------------------ */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Base                                                                 */
+  /* ------------------------------------------------------------------ */
+  html {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Typography                                                           */
+  /* ------------------------------------------------------------------ */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    max-width: 68ch;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Utility classes                                                      */
+  /* ------------------------------------------------------------------ */
+  .container {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+  }
+
+  /* Primary button */
+  .btn-primary {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #ffffff;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border: 2px solid var(--color-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
+
+  /* Ghost / outlined button */
+  .btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--color-primary);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border: 2px solid var(--color-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .btn-ghost:hover {
+    background: var(--color-primary);
+    color: #ffffff;
+  }
+
+  /* Ghost button for dark sections */
+  .btn-ghost-dark {
+    display: inline-block;
+    background: transparent;
+    color: var(--color-dark-text);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border: 2px solid var(--color-dark-text);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .btn-ghost-dark:hover {
+    background: var(--color-dark-text);
+    color: var(--color-dark-bg);
+  }
+
+  /* Section wrappers */
+  .section {
+    padding-block: var(--section-padding);
+  }
+
+  .section-dark {
+    padding-block: var(--section-padding);
+    background: var(--color-dark-bg);
+    color: var(--color-dark-text);
+  }
+
+  .section-dark h1,
+  .section-dark h2,
+  .section-dark h3,
+  .section-dark h4 {
+    color: var(--color-dark-text);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Responsive                                                           */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 768px) {
+    :root {
+      --section-padding: var(--section-padding-mobile);
+      --container-padding: 1.25rem;
+    }
+
+    html {
+      font-size: 17px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 16px;
+    }
+  }
+</style>

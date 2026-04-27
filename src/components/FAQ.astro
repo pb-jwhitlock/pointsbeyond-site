@@ -1,0 +1,213 @@
+---
+export const faqs = [
+  {
+    q: "What is an AI voice agent, and how is it different from voicemail or an answering service?",
+    a: "An AI voice agent answers calls in real time — no hold music, no voicemail box, no answering service operator reading from a script. It holds a natural conversation, asks your intake questions, qualifies the lead, books appointments directly to your calendar, and sends a follow-up text automatically. It's live 24/7 and doesn't call in sick.",
+  },
+  {
+    q: "How long does it take to go live?",
+    a: "Most clients are live within seven business days of the strategy call. Day one we scope and script. Days two through five we build and configure. Day six we test. Day seven you go live. The timeline holds because we do the configuration — you don't need to learn any software.",
+  },
+  {
+    q: "What does 'starting at $349/mo' actually mean?",
+    a: "The $349/mo floor applies to straightforward use cases — typically solo or small-team real estate agents with moderate call volume. HVAC, clinics, and multi-location businesses have higher call volume and more complex intake flows, so pricing scales accordingly. We'll quote your specific situation on the strategy call. There are no hidden per-minute fees layered on top of the monthly rate.",
+  },
+  {
+    q: "Do I have to sign a long-term contract?",
+    a: "No. We work month to month. If the system isn't delivering results, you can cancel. We keep clients by performing, not by locking them in.",
+  },
+  {
+    q: "Will customers know they're talking to an AI?",
+    a: "The voice is natural and the conversation flows well — most callers don't ask. That said, we always configure the agent to disclose it's an AI if directly asked. We don't recommend deception; we recommend performance. The agent is upfront, fast, and helpful — that's what leads care about.",
+  },
+  {
+    q: "How do you generate reviews without risking my Google Business Profile?",
+    a: "We don't buy reviews or incentivize them with discounts or gifts — both violate Google's policies. We send well-timed, personalized review requests to real clients after real transactions. The system follows Google's guidelines strictly. What we do is make it easy for happy clients to follow through on something they already intended to do.",
+  },
+  {
+    q: "What is AEO, and why does it matter if I already rank on Google?",
+    a: "Answer Engine Optimization (AEO) is structuring your content so AI tools — ChatGPT, Google AI Overview, Perplexity — cite your business when answering buyer questions. Traditional SEO gets you on page one. AEO gets you into the answer itself, before the user ever sees a list of links. As more searches end without a click, visibility in AI-generated answers is where the next generation of leads comes from.",
+  },
+  {
+    q: "What kinds of businesses do you work with?",
+    a: "Our current focus is small businesses where the phone is a primary lead channel and reputation drives decisions: real estate agents, HVAC and plumbing contractors, medical and dental practices, and similar service businesses in Northern Virginia and the broader DC metro area. If you take calls and depend on reviews, we're likely a fit.",
+  },
+];
+---
+
+<section class="section" id="faq">
+  <div class="container faq-inner">
+
+    <div class="faq-header">
+      <p class="section-eyebrow">FAQ</p>
+      <h2 class="faq-headline">Common questions.</h2>
+    </div>
+
+    <div class="faq-list">
+      {faqs.map(item => (
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>{item.q}</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-answer">{item.a}</p>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .faq-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Header (sticky left column)                                          */
+  /* ------------------------------------------------------------------ */
+  .faq-header {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+    max-width: none;
+  }
+
+  .faq-headline {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* FAQ list                                                             */
+  /* ------------------------------------------------------------------ */
+  .faq-list {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Remove default triangle marker */
+  .faq-item summary {
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.45;
+    user-select: none;
+  }
+
+  .faq-question span:first-child {
+    flex: 1;
+  }
+
+  /* Plus/minus indicator — CSS only, no animation */
+  .faq-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    margin-top: 2px;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    background: var(--color-accent);
+    border-radius: 1px;
+  }
+
+  /* Horizontal bar always present */
+  .faq-icon::before {
+    width: 14px;
+    height: 1.5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Vertical bar — hidden when open */
+  .faq-icon::after {
+    width: 1.5px;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq-item[open] .faq-icon::after {
+    display: none;
+  }
+
+  .faq-answer {
+    font-size: 0.975rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    padding-bottom: 1.5rem;
+    max-width: 64ch;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tablet                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 900px) {
+    .faq-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .faq-header {
+      position: static;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 768px) {
+    .faq-question {
+      padding: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+
+    .faq-answer {
+      max-width: none;
+      padding-bottom: 1.25rem;
+    }
+  }
+
+  @media (max-width: 414px) {
+    .faq-question {
+      padding: 1rem 0;
+    }
+  }
+</style>

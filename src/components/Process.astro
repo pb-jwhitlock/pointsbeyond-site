@@ -1,0 +1,212 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Strategy Call",
+    duration: "30 minutes — free",
+    body: "We map your current lead flow end to end: where calls are going unanswered, where reviews aren't being asked for, and where AI search is leaving you invisible. You leave with a clear picture of what's leaking revenue and what we'd fix first.",
+  },
+  {
+    number: "02",
+    title: "Custom Build",
+    duration: "Days 1–5",
+    body: "We configure your AI voice scripts, review request sequences, and content structure — built for your specific business, not a generic template. Your calendar integration, intake questions, and brand voice are baked in before anything goes live.",
+  },
+  {
+    number: "03",
+    title: "Go Live",
+    duration: "Day 7",
+    body: "Your systems launch. The AI answers calls, review requests go out automatically, and your content is indexed for AI search. Most clients are live and capturing leads within seven business days of the strategy call.",
+  },
+  {
+    number: "04",
+    title: "Ongoing Results",
+    duration: "Month 1 and beyond",
+    body: "Monthly performance reports, optimization calls, and system updates keep everything improving. You focus on clients and closings — we keep the systems sharp, the reviews flowing, and your AI search presence growing.",
+  },
+];
+---
+
+<section class="section-dark" id="process">
+  <div class="container">
+
+    <div class="process-header">
+      <p class="process-eyebrow">How It Works</p>
+      <h2 class="process-headline">From strategy call to live AI system in 7 days.</h2>
+      <p class="process-intro">No months-long implementation. No enterprise complexity. We move fast because small businesses can't afford to keep losing leads while waiting for software to deploy.</p>
+    </div>
+
+    <div class="process-steps">
+      {steps.map(step => (
+        <div class="process-step">
+          <div class="step-number">{step.number}</div>
+          <div class="step-body">
+            <div class="step-meta">
+              <h3 class="step-title">{step.title}</h3>
+              <span class="step-duration">{step.duration}</span>
+            </div>
+            <p class="step-body-text">{step.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="process-cta">
+      <a href="/contact/" class="btn-primary">Start with a free strategy call</a>
+      <p class="process-cta-note">No commitment. Just clarity on where you're losing leads.</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ------------------------------------------------------------------ */
+  /* Header                                                               */
+  /* ------------------------------------------------------------------ */
+  .process-header {
+    max-width: 680px;
+    margin-bottom: 3rem;
+  }
+
+  .process-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-dark-text-muted);
+    margin-bottom: 1.25rem;
+    max-width: none;
+  }
+
+  .process-headline {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--color-dark-text);
+    margin-bottom: 1.25rem;
+  }
+
+  .process-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-dark-text-muted);
+    max-width: 60ch;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Steps                                                                */
+  /* ------------------------------------------------------------------ */
+  .process-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--color-dark-border);
+    border: 1px solid var(--color-dark-border);
+    margin-bottom: 3rem;
+  }
+
+  .process-step {
+    background: var(--color-dark-bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .step-number {
+    font-size: clamp(40px, 4vw, 60px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .step-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .step-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .step-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-dark-text);
+    letter-spacing: -0.01em;
+  }
+
+  .step-duration {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-dark-text-muted);
+    max-width: none;
+  }
+
+  .step-body-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-dark-text-muted);
+    max-width: 44ch;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* CTA                                                                  */
+  /* ------------------------------------------------------------------ */
+  .process-cta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .process-cta-note {
+    font-size: 0.875rem;
+    color: var(--color-dark-text-muted);
+    max-width: none;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tablet                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 768px) {
+    .process-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step {
+      padding: 1.75rem 1.25rem;
+    }
+
+    .step-body-text {
+      max-width: none;
+    }
+
+    .process-cta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 414px) {
+    .process-step {
+      padding: 1.5rem 1rem;
+    }
+  }
+</style>

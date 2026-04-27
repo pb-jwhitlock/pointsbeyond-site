@@ -1,0 +1,228 @@
+---
+const navLinks = [
+  { href: '/#services', label: 'Services' },
+  { href: '/#process', label: 'Process' },
+  { href: '/contact/', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Points Beyond AI — home">
+      <svg class="logo-mark" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect width="28" height="28" rx="4" fill="#2e1f7a"/>
+        <path d="M8 20 L14 8 L20 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M10.5 15.5 H17.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">Points Beyond AI</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class:list={['nav-link', { active: currentPath === link.href }]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href="/contact/" class="btn-primary btn-cta">Book a Call</a>
+
+    <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid var(--color-border);
+    width: 100%;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-block: 1.125rem;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-mark {
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-family: var(--font-primary);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  /* Nav */
+  nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-text);
+  }
+
+  /* CTA button — slightly smaller than global .btn-primary for header fit */
+  .btn-cta {
+    font-size: 0.9rem;
+    padding: 10px 22px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Mobile toggle — hidden on desktop */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tablet                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 900px) {
+    .nav-links {
+      gap: 1.5rem;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
+    }
+
+    nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 1.25rem 1.5rem;
+      justify-content: flex-start;
+    }
+
+    nav.open {
+      display: flex;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 1.05rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-links li:last-child .nav-link {
+      border-bottom: none;
+    }
+
+    /* Keep CTA visible on mobile */
+    .btn-cta {
+      font-size: 0.85rem;
+      padding: 8px 16px;
+    }
+  }
+
+  @media (max-width: 414px) {
+    .logo-text {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .btn-cta {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.mobile-toggle') as HTMLButtonElement | null;
+  const nav = document.querySelector('header nav') as HTMLElement | null;
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close nav when a link is clicked
+  nav?.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

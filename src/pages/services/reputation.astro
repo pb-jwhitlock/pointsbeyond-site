@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { pricing } from '../../data/pricing';
+
+const service = pricing.reputation;
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.name,
+  "description": service.description,
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Points Beyond AI",
+    "url": "https://pointsbeyond.ai",
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": String(service.monthly),
+    "priceCurrency": "USD",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": String(service.monthly),
+      "priceCurrency": "USD",
+      "unitText": "month",
+      "description": service.monthlyLabel,
+    },
+  },
+  "url": "https://pointsbeyond.ai/services/reputation/",
+};
+---
+
+<Layout
+  title="Reputation Management — Points Beyond AI"
+  description={`${service.description} ${service.monthlyLabel}. Build a review profile that wins clients before the first call.`}
+  canonical="https://pointsbeyond.ai/services/reputation/"
+  schema={serviceSchema}
+>
+  <div class="section container service-page">
+
+    <div class="service-breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">→</span>
+      <a href="/#services">Services</a>
+      <span aria-hidden="true">→</span>
+      <span>Reputation Management</span>
+    </div>
+
+    <div class="service-hero">
+      <p class="service-label">Service</p>
+      <h1 class="service-title">{service.name}</h1>
+      <p class="service-price">{service.monthlyLabel} &mdash; {service.setupLabel}</p>
+      <p class="service-description">Most satisfied clients never leave a review — not because they don't want to, but because no one asked at the right moment. We build the automated system that does: well-timed review requests after every transaction, gentle follow-ups, and ongoing monitoring so you always know what's being said about your business on Google.</p>
+    </div>
+
+    <div class="service-detail-note">
+      <p>Detailed service page coming soon. In the meantime, <a href="/contact/">book a free strategy call</a> and we'll walk you through exactly how it works for your business.</p>
+    </div>
+
+    <div class="service-includes">
+      <h2>What's included</h2>
+      <ul>
+        <li>Automated review request sequences via SMS and email</li>
+        <li>Timed follow-ups for non-responders (compliant with Google policy)</li>
+        <li>Google Business Profile monitoring and new review alerts</li>
+        <li>Negative review response guidance and reply templates</li>
+        <li>Monthly reputation summary report with trend data</li>
+        <li>No incentivized or purchased reviews — fully Google-compliant</li>
+      </ul>
+    </div>
+
+    <div class="service-cta-block">
+      <a href="/contact/" class="btn-primary">Book a free strategy call</a>
+      <a href="/#services" class="btn-ghost">See all services</a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .service-page {
+    max-width: 720px;
+  }
+
+  .service-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .service-breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .service-breadcrumb a:hover {
+    color: var(--color-accent);
+  }
+
+  .service-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    max-width: none;
+  }
+
+  .service-title {
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    max-width: none;
+  }
+
+  .service-description {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    max-width: 62ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .service-detail-note {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .service-detail-note p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    max-width: none;
+  }
+
+  .service-detail-note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .service-includes h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-includes ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .service-includes li {
+    font-size: 0.975rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .service-includes li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .service-cta-block {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>

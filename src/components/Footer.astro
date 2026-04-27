@@ -1,0 +1,242 @@
+---
+const currentYear = new Date().getFullYear();
+
+const services = [
+  { label: 'AI Voice Agents', href: '/services/voice-ai/' },
+  { label: 'Reputation Management', href: '/services/reputation/' },
+  { label: 'AEO + SEO', href: '/services/aeo-seo/' },
+];
+
+const company = [
+  { label: 'Process', href: '/#process' },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'Book a Call', href: '/contact/' },
+];
+
+const legal = [
+  { label: 'Privacy Policy', href: '/privacy/' },
+  { label: 'Terms & Conditions', href: '/terms/' },
+];
+---
+
+<footer>
+  <div class="container footer-inner">
+    <!-- Brand column -->
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label="Points Beyond AI — home">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect width="28" height="28" rx="4" fill="#2e1f7a"/>
+          <path d="M8 20 L14 8 L20 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M10.5 15.5 H17.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Points Beyond AI</span>
+      </a>
+      <p class="footer-tagline">
+        AI systems for small businesses that want to capture every lead, build their reputation, and be found in AI search.
+      </p>
+      <a
+        href="https://www.linkedin.com/in/johnhwhitlock/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-social"
+        aria-label="John Whitlock on LinkedIn"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+
+    <!-- Services column -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Services</h3>
+      <ul class="footer-links">
+        {services.map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Company column -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Company</h3>
+      <ul class="footer-links">
+        {company.map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Legal column -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Legal</h3>
+      <ul class="footer-links">
+        {legal.map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {currentYear} Points Beyond LLC. All rights reserved.</p>
+      <p class="footer-location">Fairfax County, VA</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--color-dark-bg);
+    color: var(--color-dark-text);
+    margin-top: auto;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Main grid                                                            */
+  /* ------------------------------------------------------------------ */
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-block: 80px;
+  }
+
+  /* Brand column */
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--color-dark-text);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    color: var(--color-dark-text-muted);
+    line-height: 1.6;
+    max-width: 30ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-dark-text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .footer-social:hover {
+    color: var(--color-dark-text);
+  }
+
+  /* Nav columns */
+  .footer-col {
+    /* column */
+  }
+
+  .footer-heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-dark-text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-links a {
+    font-size: 0.95rem;
+    color: var(--color-dark-text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-dark-text);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Bottom bar                                                           */
+  /* ------------------------------------------------------------------ */
+  .footer-bottom {
+    border-top: 1px solid var(--color-dark-border);
+    padding-block: 1.5rem;
+  }
+
+  .footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: var(--color-dark-text-muted);
+    max-width: none;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tablet                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 900px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+
+    .footer-tagline {
+      max-width: 50ch;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 768px) {
+    .footer-inner {
+      padding-block: 60px;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-bottom .container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

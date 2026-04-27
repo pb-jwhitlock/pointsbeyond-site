@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { siteConfig } from '../data/config';
+---
+
+<Layout
+  title="Contact Points Beyond AI — Book a Free Strategy Call"
+  description="Book a free 30-minute strategy call with Points Beyond AI. We'll map where your business is losing leads and show you what AI can fix."
+>
+
+  <!-- Booking Calendar -->
+  <section class="section booking-section">
+    <div class="container booking-inner">
+
+      <div class="booking-header">
+        <p class="section-eyebrow">Book a Call</p>
+        <h1 class="booking-headline">Free 30-minute strategy call.</h1>
+        <p class="booking-intro">Pick a time that works for you. We'll map your current lead flow, identify where calls and reviews are slipping, and walk you through exactly what we'd build — no obligation, no pitch deck.</p>
+      </div>
+
+      <div class="calendar-slot">
+        <!-- Replace this div with your booking calendar embed code -->
+        <!-- Supported: GHL calendar, Calendly, Cal.com, Acuity, TidyCal, etc. -->
+        <!-- Example Calendly: <div class="calendly-inline-widget" data-url="https://calendly.com/your-link" style="min-width:320px;height:700px;"></div><script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script> -->
+        <div class="calendar-placeholder">
+          <p>Calendar booking coming soon — <a href="#contact">use the form below</a> to reach us directly.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider container"></div>
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+</Layout>
+
+<style>
+  .booking-inner {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .booking-header {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+    max-width: none;
+  }
+
+  .booking-headline {
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+  }
+
+  .booking-intro {
+    font-size: 0.975rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 36ch;
+  }
+
+  .calendar-slot {
+    min-height: 300px;
+  }
+
+  .calendar-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    border: 1px dashed var(--color-border);
+    border-radius: 4px;
+    padding: 2rem;
+  }
+
+  .calendar-placeholder p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    max-width: 40ch;
+  }
+
+  .calendar-placeholder a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: var(--color-border);
+    padding: 0;
+  }
+
+  @media (max-width: 960px) {
+    .booking-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .booking-header {
+      position: static;
+    }
+
+    .booking-intro {
+      max-width: 60ch;
+    }
+  }
+</style>

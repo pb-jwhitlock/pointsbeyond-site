@@ -1,0 +1,155 @@
+---
+const points = [
+  {
+    stat: "80%",
+    headline: "Callers who don't leave a voicemail move on.",
+    body: "When a lead hits voicemail, most hang up and call your competitor. Every unanswered call after hours, on weekends, or during a busy showing is revenue you'll never see.",
+  },
+  {
+    stat: "4.2★",
+    headline: "The rating threshold customers won't cross below.",
+    body: "Buyers and renters check Google before they call. A thin review profile — or worse, a few unaddressed negatives — costs you the shortlist before the conversation even starts.",
+  },
+  {
+    stat: "40%",
+    headline: "Of searches now end without clicking a traditional result.",
+    body: "ChatGPT, Google AI Overview, and Perplexity pull answers from structured content. If your business isn't optimized for AI search, you're invisible to a growing share of buyers looking right now.",
+  },
+  {
+    stat: "14 hrs",
+    headline: "Lost each week to manual follow-up and phone tag.",
+    body: "Chasing leads, scheduling calls, texting confirmations — it adds up fast. That's time you're not spending with clients, on listings, or closing deals.",
+  },
+];
+---
+
+<section class="section" id="pain-points">
+  <div class="container">
+
+    <div class="pain-header">
+      <p class="section-eyebrow">The Problem</p>
+      <h2 class="pain-headline">Your phone, your reviews, and your search presence<br class="break-desktop" /> are working against you.</h2>
+      <p class="pain-intro">Most small businesses lose leads silently — not from bad service, but from systems that weren't built for how customers find and choose businesses today.</p>
+    </div>
+
+    <div class="pain-grid">
+      {points.map(point => (
+        <div class="pain-card">
+          <p class="pain-stat">{point.stat}</p>
+          <h3 class="pain-card-headline">{point.headline}</h3>
+          <p class="pain-card-body">{point.body}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pain-header {
+    max-width: 780px;
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+    max-width: none;
+  }
+
+  .pain-headline {
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+  }
+
+  .pain-intro {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 62ch;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Grid                                                                 */
+  /* ------------------------------------------------------------------ */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+  }
+
+  .pain-card {
+    background: var(--color-bg);
+    padding: 2.5rem;
+  }
+
+  .pain-stat {
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+    max-width: none;
+  }
+
+  .pain-card-headline {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .pain-card-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 42ch;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tablet                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 768px) {
+    .pain-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .pain-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pain-card {
+      padding: 1.75rem 1.25rem;
+    }
+
+    .break-desktop {
+      display: none;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 414px) {
+    .pain-card {
+      padding: 1.5rem 1rem;
+    }
+
+    .pain-card-body {
+      max-width: none;
+    }
+  }
+</style>

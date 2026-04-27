@@ -1,0 +1,360 @@
+---
+import { formConfig, siteConfig } from '../data/config';
+---
+
+<section class="section" id="contact">
+  <div class="container contact-inner">
+
+    <div class="contact-header">
+      <p class="section-eyebrow">Get Started</p>
+      <h2 class="contact-headline">Tell us about your business.</h2>
+      <p class="contact-intro">Fill out the form and we'll reach out within one business day to schedule your free strategy call. No pitch — just a clear look at where you're losing leads and what it would take to fix it.</p>
+    </div>
+
+    <form
+      class="contact-form"
+      action={formConfig.endpoint}
+      method="POST"
+    >
+      <!-- Formspree helpers -->
+      <input type="hidden" name="_subject" value={`New inquiry — ${siteConfig.name}`} />
+      <input type="hidden" name="_next" value={`${siteConfig.url}/contact/?sent=true`} />
+
+      <div class="form-row form-row-2">
+        <div class="form-field">
+          <label for="name">Full name <span class="required">*</span></label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            autocomplete="name"
+            required
+            placeholder="Jane Smith"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email address <span class="required">*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            required
+            placeholder="jane@example.com"
+          />
+        </div>
+      </div>
+
+      <div class="form-row form-row-2">
+        <div class="form-field">
+          <label for="phone">Phone <span class="optional">optional</span></label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            autocomplete="tel"
+            placeholder="(703) 555-0100"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="website">Website URL <span class="optional">optional</span></label>
+          <input
+            type="url"
+            id="website"
+            name="website"
+            autocomplete="url"
+            placeholder="https://yourbusiness.com"
+          />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <fieldset class="form-fieldset">
+          <legend>Service interest <span class="optional">select all that apply</span></legend>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="service[]" value="AI Voice Agents" />
+              <span>AI Voice Agents</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="service[]" value="Reputation Management" />
+              <span>Reputation Management</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="service[]" value="AEO + SEO" />
+              <span>AEO + SEO</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="service[]" value="Full Growth Bundle" />
+              <span>Full Growth Bundle</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form-field">
+        <label for="message">Anything else we should know <span class="optional">optional</span></label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Tell us about your business, current lead volume, biggest pain points, or anything that helps us prepare for the call."
+        ></textarea>
+      </div>
+
+      <div class="form-field">
+        <label class="checkbox-label sms-consent">
+          <input type="checkbox" name="sms_consent" value="yes" />
+          <span class="sms-consent-text">
+            I consent to receive SMS messages from Points Beyond AI about my inquiry. Message and data rates may apply. Message frequency varies. Reply STOP to opt out at any time. View our <a href="/privacy/">Privacy Policy</a>.
+          </span>
+        </label>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="btn-primary">Send message</button>
+        <p class="form-note">We respond within one business day.</p>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<style>
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Header                                                               */
+  /* ------------------------------------------------------------------ */
+  .contact-header {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+    max-width: none;
+  }
+
+  .contact-headline {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-intro {
+    font-size: 0.975rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 36ch;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Form layout                                                          */
+  /* ------------------------------------------------------------------ */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Fields                                                               */
+  /* ------------------------------------------------------------------ */
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-field label,
+  .form-fieldset legend {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .required {
+    color: var(--color-accent);
+    margin-left: 2px;
+  }
+
+  .optional {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-left: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-primary);
+    font-size: 0.975rem;
+    color: var(--color-text);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.15s ease;
+    appearance: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  textarea:focus {
+    border-color: var(--color-accent);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Fieldset / checkboxes                                                */
+  /* ------------------------------------------------------------------ */
+  .form-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .form-fieldset legend {
+    margin-bottom: 0.75rem;
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  .checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* SMS consent                                                          */
+  /* ------------------------------------------------------------------ */
+  .sms-consent {
+    padding: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .sms-consent-text {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  .sms-consent-text a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Submit                                                               */
+  /* ------------------------------------------------------------------ */
+  .form-submit {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+  }
+
+  .form-note {
+    font-size: 0.825rem;
+    color: var(--color-text-muted);
+    max-width: none;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tablet                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 960px) {
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-header {
+      position: static;
+    }
+
+    .contact-intro {
+      max-width: 60ch;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .form-row-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 414px) {
+    .checkbox-group {
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+  }
+</style>

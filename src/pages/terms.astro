@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Terms & Conditions — Points Beyond AI"
+  description="Terms and conditions for Points Beyond AI services."
+  canonical="https://pointsbeyond.ai/terms/"
+>
+  <div class="section container prose">
+
+    <h1>Terms &amp; Conditions</h1>
+    <p class="last-updated">Last updated: April 27, 2026</p>
+
+    <p>These Terms and Conditions ("Terms") govern your use of the website at pointsbeyond.ai and the services provided by Points Beyond LLC ("Points Beyond AI," "we," "our," or "us"). By engaging our services or using this website, you agree to these Terms.</p>
+
+    <h2>Services</h2>
+    <p>Points Beyond AI provides AI voice agent configuration and management, reputation management (review generation and monitoring), and answer engine / search optimization services to small businesses. Specific deliverables, pricing, and timelines for each engagement are defined in a separate Service Agreement provided at the time of engagement.</p>
+
+    <h2>Payment Terms</h2>
+    <p>Setup fees are due before work begins. Monthly retainer fees are billed in advance on the first of each month.</p>
+    <p>All fees are non-refundable except as required by applicable law or as expressly stated in a written Service Agreement.</p>
+
+    <h2>Month-to-Month Engagement</h2>
+    <p>Services operate on a month-to-month basis unless a separate written agreement specifies a minimum term. Either party may cancel with 30 days written notice. Cancellation does not entitle the client to a refund of fees already paid for the current billing period.</p>
+
+    <h2>Client Responsibilities</h2>
+    <p>You agree to:</p>
+    <ul>
+      <li>Provide accurate information about your business, phone systems, and technical environment</li>
+      <li>Cooperate with onboarding requirements, including providing access to phone numbers, Google Business Profile, and other necessary accounts</li>
+      <li>Ensure that your use of AI voice agents and review request systems complies with applicable laws in your jurisdiction, including TCPA regulations</li>
+      <li>Not use our services for any unlawful purpose</li>
+    </ul>
+
+    <h2>AI Voice Agent Disclosures</h2>
+    <p>We configure AI voice agents to disclose their automated nature to callers if directly asked. You agree not to instruct us to configure agents to deceive callers about their non-human nature.</p>
+
+    <h2>Review Generation Compliance</h2>
+    <p>Our reputation management services use compliant review request workflows. We do not purchase reviews, offer incentives for reviews, or engage in any practice that violates Google's review policies or the FTC's guidelines on endorsements. You agree not to request that we take any such actions.</p>
+
+    <h2>Intellectual Property</h2>
+    <p>Content we create for you (AI scripts, FAQ content, SEO copy) is owned by you upon full payment. Our methodologies, templates, and underlying systems remain our intellectual property.</p>
+
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by applicable law, Points Beyond LLC's total liability for any claim arising from or related to these Terms or our services shall not exceed the total fees paid by you in the three months preceding the claim. We are not liable for indirect, incidental, consequential, or punitive damages.</p>
+
+    <h2>Disclaimer of Warranties</h2>
+    <p>Our services are provided "as is." We do not guarantee specific outcomes such as a defined number of leads, reviews, or search rankings. Results depend on factors outside our control, including your market, competition, and business operations.</p>
+
+    <h2>Governing Law</h2>
+    <p>These Terms are governed by the laws of the Commonwealth of Virginia, without regard to conflict of law principles. Any disputes shall be resolved in the courts of Fairfax County, Virginia.</p>
+
+    <h2>Changes to These Terms</h2>
+    <p>We may update these Terms periodically. Continued use of our services after notice of changes constitutes acceptance. Material changes will be communicated to active clients via email.</p>
+
+    <h2>Contact</h2>
+    <p>Points Beyond LLC<br />
+    Fairfax County, Virginia<br />
+    <a href="mailto:info@pointsbeyond.ai">info@pointsbeyond.ai</a></p>
+
+  </div>
+</Layout>
+
+<style>
+  .prose {
+    max-width: 720px;
+    padding-block: var(--section-padding);
+  }
+
+  .prose h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+  }
+
+  .last-updated {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    max-width: none;
+  }
+
+  .prose h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .prose p {
+    font-size: 0.975rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    max-width: 68ch;
+  }
+
+  .prose ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .prose ul li {
+    font-size: 0.975rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .prose ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .prose a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,158 @@
+---
+const testimonials = [
+  {
+    quote: "We were losing weekend calls constantly — leads who'd call once and move on. The AI agent changed that overnight. It answers, qualifies, and books. I haven't missed a lead in six weeks.",
+    name: "Michael R.",
+    role: "Real Estate Agent, Northern VA",
+  },
+  {
+    quote: "I had 12 Google reviews after three years in business. Two months in we're at 47, all legitimate, all from happy clients. It just runs. I didn't change anything about how I work.",
+    name: "Sarah L.",
+    role: "Independent HVAC Contractor",
+  },
+  {
+    quote: "A buyer told me they found me on ChatGPT. I didn't even know that was possible. Now I show up in AI search results for half the neighborhoods I work in. That's the AEO doing its job.",
+    name: "David T.",
+    role: "Residential Realtor, Fairfax County",
+  },
+];
+---
+
+<section class="section" id="testimonials">
+  <div class="container">
+
+    <div class="testimonials-header">
+      <p class="section-eyebrow">What Clients Say</p>
+      <h2 class="testimonials-headline">Results from businesses like yours.</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      {testimonials.map(t => (
+        <div class="testimonial-card">
+          <blockquote class="testimonial-quote">
+            &ldquo;{t.quote}&rdquo;
+          </blockquote>
+          <footer class="testimonial-footer">
+            <p class="testimonial-name">{t.name}</p>
+            <p class="testimonial-role">{t.role}</p>
+          </footer>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .testimonials-header {
+    max-width: 680px;
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+    max-width: none;
+  }
+
+  .testimonials-headline {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Grid                                                                 */
+  /* ------------------------------------------------------------------ */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+  }
+
+  .testimonial-card {
+    background: var(--color-bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Quote — capped at three lines                                        */
+  /* ------------------------------------------------------------------ */
+  .testimonial-quote {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    font-style: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: none;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Attribution                                                          */
+  /* ------------------------------------------------------------------ */
+  .testimonial-footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.25rem;
+  }
+
+  .testimonial-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text);
+    max-width: none;
+  }
+
+  .testimonial-role {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: 0.2rem;
+    max-width: none;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tablet                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 900px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile                                                               */
+  /* ------------------------------------------------------------------ */
+  @media (max-width: 768px) {
+    .testimonials-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+      padding: 1.75rem 1.25rem;
+    }
+  }
+
+  @media (max-width: 414px) {
+    .testimonial-card {
+      padding: 1.5rem 1rem;
+    }
+  }
+</style>
