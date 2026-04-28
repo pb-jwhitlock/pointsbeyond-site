@@ -78,7 +78,6 @@ const services = [
                 <a href={service.href}>{service.name}</a>
               </h3>
               <p class="service-description">{service.description}</p>
-              <p class="service-roi">{service.roiAnchor}</p>
 
               <ul class="service-deliverables">
                 {service.deliverables.map(item => (
@@ -87,6 +86,7 @@ const services = [
               </ul>
 
               <p class="service-price-inline">{service.monthlyLabel}</p>
+              <p class="service-roi">{service.roiAnchor}</p>
               <a href="/contact/" class="service-cta">Get started →</a>
             </div>
           </div>
