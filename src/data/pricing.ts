@@ -8,7 +8,7 @@ export const pricing = {
     monthlyLabel: "Starting at $349/mo",
     setupLabel: "$1,500 setup",
     description: "24/7 AI-powered phone answering that captures every lead.",
-    roiAnchor: "The average missed call costs a small business $200+ in lost revenue",
+    roiAnchor: "Never miss an emergency call — your AI answers, triages, and routes urgent leads before they call your competitor.",
   },
   reputation: {
     name: "Reputation Management",
