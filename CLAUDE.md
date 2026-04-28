@@ -3,7 +3,7 @@
 ## Overview
 
 Company website for **Points Beyond AI** / Points Beyond LLC (John Whitlock).
-AI services consultancy in Fairfax County, VA — three core services: AI Voice Agents, Reputation Management, AEO + SEO.
+AI services consultancy in Fairfax County, VA — three core services: AI Voice Agents, Reputation Management, AEO.
 
 - **Live domain**: https://pointsbeyond.ai — currently served from `points-beyond-frontend-1` (plain HTML, legacy)
 - **This repo**: `pb-jwhitlock/pointsbeyond-site` — clean Astro 6 rebuild, replaces `pb-jwhitlock/points-beyond`
@@ -80,10 +80,11 @@ Inspired by Subduxion (subduxion.com). Key principles:
 
 ### Mobile Padding Rules
 
-- **Section padding**: 80px top/bottom desktop → 48px mobile (revised down from 120px/64px during build for visual balance)
+- **Section padding**: 80px top/bottom desktop → 32px mobile (`--section-padding-mobile: 32px` in Layout.astro)
 - **Hero top**: 60px desktop → 32px mobile; hero `padding-bottom: 0` (rule sits flush at bottom, section padding below provides gap)
 - **Card internal padding**: 24px desktop → 16px mobile
 - **Section header margin-bottom**: `3rem` — consistent across all sections
+- **Modifier classes** (`section-services`, `section-faq`, `section-contact`, etc.) are on each component `<section>` tag — currently inert but available for future per-section overrides
 
 ## Service Positioning & Pricing
 
@@ -95,16 +96,18 @@ Always use **"Points Beyond AI"** — never "Points Beyond" alone on the site.
 
 1. **AI Voice Agents** — lead offer (24/7 AI phone answering, lead capture)
 2. **Reputation Management** — Google reviews generation + monitoring
-3. **AEO + SEO** — structured content optimized for AI search (ChatGPT, Google AI Overview, Perplexity)
+3. **AEO** — structured content optimized for AI search (ChatGPT, Google AI Overview, Perplexity)
 
 ### Pricing (Single Source of Truth: `src/data/pricing.ts`)
 
 All prices imported from `src/data/pricing.ts`. Never hardcode a number.
 
+`pricing.ts` also contains a `roiAnchor` string per service (one-line ROI statement shown on service cards).
+
 **Public "Starting at" language** anchors to real estate rates (simplest tier):
 - AI Voice Agents: Setup $1,500 / **Starting at $349/mo**
 - Reputation Management: Setup $750 / **Starting at $249/mo**
-- AEO + SEO Foundation: $2,500 one-time / $599/mo optional retainer
+- AEO Foundation: $2,500 one-time / $599/mo optional retainer
 - Bundle (all three): Setup $3,995 / **Starting at $797/mo**
 
 Higher-complexity clients (HVAC, multi-location clinics) get custom quotes — not published.
@@ -201,7 +204,7 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 4. Disable Pages on `pb-jwhitlock/points-beyond-frontend-1`
 5. Archive (do not delete): `points-beyond-frontend-1`, `points-beyond` (old Astro rebuild)
 
-## Current Status (April 27, 2026)
+## Current Status (April 28, 2026)
 
 | Item | Status |
 |---|---|
@@ -217,26 +220,31 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 | GitHub Pages enabled on new repo | ✅ |
 | `pointsbeyond.ai` live on new Astro site | ✅ — HTTPS enforced |
 | Old repos archived | ✅ — `points-beyond-frontend-1`, `points-beyond` archived; Pages disabled |
+| Mobile polish — Services section | ✅ — inline pricing, hidden numbers, ROI anchors, setup fees |
+| "AEO + SEO" → "AEO" rebrand across visible content | ✅ |
+| Terms & Conditions — 30-day satisfaction window | ✅ — updated; still needs attorney sign-off |
+| Favicon link order | ✅ — SVG now prioritized; hard refresh required to see |
 | Calendar embed (contact page) | ❌ — placeholder in place, add when ready |
-| Favicon | ⚠️ — logo files copied but not rendering in browser; revisit post-launch |
-| Terms page attorney review | ⚠️ — draft content, needs attorney sign-off |
+| Service pages full copy | ❌ — placeholder pages, schema crawlable |
 
 **Live site**: https://pointsbeyond.ai — Astro 6 rebuild, fully deployed.
 
-## Last Session Summary (April 27, 2026)
+## Last Session Summary (April 28, 2026)
 
-- Built entire `pointsbeyond-site` from scratch: Astro 6 project, all homepage sections (Hero → ContactForm), all supporting pages, full schema/SEO, sitemap, GitHub Actions workflow
-- Switched contact form from Formspree to GHL webhook (`formConfig.endpoint` in config.ts) using fetch-based JSON submission with inline success/error states
-- Completed full cutover: GitHub Pages enabled, custom domain `pointsbeyond.ai` set, HTTPS enforced, old repos (`points-beyond-frontend-1`, `points-beyond`) archived and Pages disabled
+- Extensive mobile polish on Services section: hidden card numbers, inline price + setup fee display below deliverables, ROI anchor lines per service, removed borders, tightened padding; service card mobile order is now Name → Description → Deliverables → Price → Setup fee → ROI anchor → Get started
+- Rebranded "AEO + SEO" → "AEO" across all visible content (URLs/identifiers untouched); added `roiAnchor` field to `pricing.ts`; fixed Process step numbers (01–04 → 1–4) and FAQ "Traditional SEO" → "Traditional marketing"
+- Updated Terms & Conditions with 30-day satisfaction window, prorated refund policy, and expanded payment terms; fixed favicon `<link>` order to prioritize SVG; removed orphaned hero pricing note
 
 ## Next Steps
+
+**Resume here:**
+- Verify favicon is rendering on live site after hard refresh (`Cmd+Shift+R`) — SVG link now prioritized in Layout.astro
+- Terms page attorney sign-off before treating as final
 
 **Soon:**
 - Add calendar embed to `/contact/` (GHL calendar, Calendly, etc. — slot is ready in contact.astro)
 - Add chat widget embed to `Layout.astro` (slot is ready near `</body>`)
 - Expand service pages from placeholder to full copy (`/services/voice-ai/`, `/services/reputation/`, `/services/aeo-seo/`)
-- Resolve favicon (Points Beyond dark mark — files in `public/` but browser not picking up)
-- Terms page attorney sign-off before treating as final
 
 ## Known Issues / Notes
 
@@ -244,5 +252,7 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 - Service pages (`/services/*`) are placeholder pages — crawlable with real schema, full copy TK
 - SMS consent checkbox includes TCPA-compliant language in `ContactForm.astro`
 - `siteConfig.email` in `config.ts` is `info@pointsbeyond.ai` — used in privacy + terms pages
-- Terms page is a working draft — reviewed for [REVIEW] markers this session, needs attorney sign-off before cutover
-- Favicon files in `public/`: `favicon-logo.jpg` (original), `favicon-32.png`, `favicon-16.png`, `apple-touch-icon.png` — browser not rendering; revisit post-launch
+- Terms page updated with 30-day satisfaction window — needs attorney sign-off before treating as final
+- Favicon: SVG now first in `<link>` order (`Layout.astro` lines 95–100); all files present in `public/`; hard refresh required after deploy
+- Service branding: "AEO + SEO" → "AEO Foundation" in `pricing.ts`; all visible text updated; URLs (`/services/aeo-seo/`) and code identifiers (`pricing.aeoSeo`) intentionally unchanged
+- FAQ AEO answer intentionally still reads "Traditional marketing gets you on page one" (changed from "Traditional SEO" this session)
