@@ -18,7 +18,7 @@ export const pricing = {
     description: "Systematic Google review generation and monitoring.",
   },
   aeoSeo: {
-    name: "AEO + SEO Foundation",
+    name: "AEO Foundation",
     oneTime: 2500,
     oneTimeLabel: "$2,500",
     monthly: 599,
