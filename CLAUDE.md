@@ -226,6 +226,7 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 | Favicon link order | ✅ — SVG now prioritized; hard refresh required to see |
 | Emergency call routing language — Hero, Services, FAQ | ✅ |
 | SEO reweaved alongside AEO in copy and meta tags | ✅ |
+| Hero right column — service stack with pill rows | ✅ |
 | Calendar embed (contact page) | ❌ — placeholder in place, add when ready |
 | Service pages full copy | ❌ — placeholder pages, schema crawlable |
 
@@ -233,20 +234,21 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 
 ## Last Session Summary (April 28, 2026)
 
-- Added emergency call detection and routing language sitewide: new sentence in Voice AI service description, updated `voiceAI.roiAnchor` in `pricing.ts`, new FAQ entry ("Can the AI handle emergency or urgent calls differently?") inserted as Q2, and hero subheading now ends "…while you work, including emergency call detection and routing."
-- Rewove SEO back into copy as supporting context for AEO: AEO Foundation service description rewritten ("Built on a foundation of technical SEO…"), FAQ AEO answer updated ("Traditional SEO gets you ranked… We build both into every engagement."), and `index.astro` title/description now say "AEO + SEO."
-- Attempted hero graphic swap (sine wave → PNG → inline SVG phone/stars/arrow); result was visually off, reverted cleanly to original sine wave SVG. `public/hero-graphic.png` is present but unused — safe to delete.
+- Replaced hero right-column sine wave SVG with a compact service stack: three pill rows (icon + service name left, faint italic tagline clause right — "Never miss a call." / "Own your reputation." / "Be the answer."), grid column narrowed to 340px, stack vertically centered via `align-items: stretch` + `display: flex; align-items: center` on `.hero-visual`
+- Added emergency call detection and routing language sitewide: new sentence in Voice AI service description, updated `voiceAI.roiAnchor` in `pricing.ts`, new FAQ entry ("Can the AI handle emergency or urgent calls differently?") inserted as Q2, hero subheading appended "…including emergency call detection and routing."
+- Rewove SEO back into copy as supporting context for AEO: AEO Foundation description rewritten, FAQ AEO answer updated ("Traditional SEO gets you ranked… We build both into every engagement."), `index.astro` title/description now say "AEO + SEO."
 
 ## Next Steps
 
 **Resume here:**
+- Review the live hero on desktop — verify pill stack is vertically centered against the headline/sub/CTAs column
 - Terms page attorney sign-off before treating as final
-- Delete unused `public/hero-graphic.png` (or keep as reference; it does not affect the build)
 
 **Soon:**
 - Add calendar embed to `/contact/` (GHL calendar, Calendly, etc. — slot is ready in contact.astro)
 - Add chat widget embed to `Layout.astro` (slot is ready near `</body>`)
 - Expand service pages from placeholder to full copy (`/services/voice-ai/`, `/services/reputation/`, `/services/aeo-seo/`)
+- Delete unused `public/hero-graphic.png` (500K, unreferenced)
 
 ## Known Issues / Notes
 
@@ -257,5 +259,5 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 - Terms page updated with 30-day satisfaction window — needs attorney sign-off before treating as final
 - Favicon: SVG now first in `<link>` order (`Layout.astro` lines 95–100); all files present in `public/`; hard refresh required after deploy
 - Service branding: "AEO + SEO" → "AEO Foundation" in `pricing.ts`; all visible text updated; URLs (`/services/aeo-seo/`) and code identifiers (`pricing.aeoSeo`) intentionally unchanged
-- Hero graphic: `public/hero-graphic.png` (500K) present but unreferenced — the hero uses the inline sine wave SVG; delete the PNG when convenient
-- FAQ AEO answer now reads "Traditional SEO gets you ranked in search results. AEO gets you cited as the answer…" (reverted from "Traditional marketing" wording this session)
+- Hero: sine wave SVG replaced with service pill stack (`Hero.astro` lines 27–54). `public/hero-graphic.png` present but unreferenced — safe to delete.
+- FAQ AEO answer reads "Traditional SEO gets you ranked… We build both into every engagement." — SEO intentionally reintroduced as supporting context for AEO
