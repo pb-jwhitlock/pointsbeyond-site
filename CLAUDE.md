@@ -224,6 +224,8 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 | "AEO + SEO" → "AEO" rebrand across visible content | ✅ |
 | Terms & Conditions — 30-day satisfaction window | ✅ — updated; still needs attorney sign-off |
 | Favicon link order | ✅ — SVG now prioritized; hard refresh required to see |
+| Emergency call routing language — Hero, Services, FAQ | ✅ |
+| SEO reweaved alongside AEO in copy and meta tags | ✅ |
 | Calendar embed (contact page) | ❌ — placeholder in place, add when ready |
 | Service pages full copy | ❌ — placeholder pages, schema crawlable |
 
@@ -231,15 +233,15 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 
 ## Last Session Summary (April 28, 2026)
 
-- Extensive mobile polish on Services section: hidden card numbers, inline price + setup fee display below deliverables, ROI anchor lines per service, removed borders, tightened padding; service card mobile order is now Name → Description → Deliverables → Price → Setup fee → ROI anchor → Get started
-- Rebranded "AEO + SEO" → "AEO" across all visible content (URLs/identifiers untouched); added `roiAnchor` field to `pricing.ts`; fixed Process step numbers (01–04 → 1–4) and FAQ "Traditional SEO" → "Traditional marketing"
-- Updated Terms & Conditions with 30-day satisfaction window, prorated refund policy, and expanded payment terms; fixed favicon `<link>` order to prioritize SVG; removed orphaned hero pricing note
+- Added emergency call detection and routing language sitewide: new sentence in Voice AI service description, updated `voiceAI.roiAnchor` in `pricing.ts`, new FAQ entry ("Can the AI handle emergency or urgent calls differently?") inserted as Q2, and hero subheading now ends "…while you work, including emergency call detection and routing."
+- Rewove SEO back into copy as supporting context for AEO: AEO Foundation service description rewritten ("Built on a foundation of technical SEO…"), FAQ AEO answer updated ("Traditional SEO gets you ranked… We build both into every engagement."), and `index.astro` title/description now say "AEO + SEO."
+- Attempted hero graphic swap (sine wave → PNG → inline SVG phone/stars/arrow); result was visually off, reverted cleanly to original sine wave SVG. `public/hero-graphic.png` is present but unused — safe to delete.
 
 ## Next Steps
 
 **Resume here:**
-- Verify favicon is rendering on live site after hard refresh (`Cmd+Shift+R`) — SVG link now prioritized in Layout.astro
 - Terms page attorney sign-off before treating as final
+- Delete unused `public/hero-graphic.png` (or keep as reference; it does not affect the build)
 
 **Soon:**
 - Add calendar embed to `/contact/` (GHL calendar, Calendly, etc. — slot is ready in contact.astro)
@@ -255,4 +257,5 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 - Terms page updated with 30-day satisfaction window — needs attorney sign-off before treating as final
 - Favicon: SVG now first in `<link>` order (`Layout.astro` lines 95–100); all files present in `public/`; hard refresh required after deploy
 - Service branding: "AEO + SEO" → "AEO Foundation" in `pricing.ts`; all visible text updated; URLs (`/services/aeo-seo/`) and code identifiers (`pricing.aeoSeo`) intentionally unchanged
-- FAQ AEO answer intentionally still reads "Traditional marketing gets you on page one" (changed from "Traditional SEO" this session)
+- Hero graphic: `public/hero-graphic.png` (500K) present but unreferenced — the hero uses the inline sine wave SVG; delete the PNG when convenient
+- FAQ AEO answer now reads "Traditional SEO gets you ranked in search results. AEO gets you cited as the answer…" (reverted from "Traditional marketing" wording this session)
