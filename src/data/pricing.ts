@@ -8,6 +8,7 @@ export const pricing = {
     monthlyLabel: "Starting at $349/mo",
     setupLabel: "$1,500 setup",
     description: "24/7 AI-powered phone answering that captures every lead.",
+    roiAnchor: "The average missed call costs a small business $200+ in lost revenue",
   },
   reputation: {
     name: "Reputation Management",
@@ -16,6 +17,7 @@ export const pricing = {
     monthlyLabel: "Starting at $249/mo",
     setupLabel: "$750 setup",
     description: "Systematic Google review generation and monitoring.",
+    roiAnchor: "One new 5-star review can be worth thousands in referrals",
   },
   aeoSeo: {
     name: "AEO Foundation",
@@ -24,6 +26,7 @@ export const pricing = {
     monthly: 599,
     monthlyLabel: "$599/mo retainer (optional)",
     description: "Structured content optimized for AI search visibility.",
+    roiAnchor: "AI search is where your next customer is looking — be there first",
   },
   bundle: {
     name: "Full Growth Bundle",

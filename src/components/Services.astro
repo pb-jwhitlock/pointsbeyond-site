@@ -8,6 +8,7 @@ const services = [
     href: '/services/voice-ai/',
     setupLabel: pricing.voiceAI.setupLabel,
     monthlyLabel: pricing.voiceAI.monthlyLabel,
+    roiAnchor: pricing.voiceAI.roiAnchor,
     description: "Your phone rings at 9pm on a Saturday. Right now, that call goes to voicemail — and the lead calls your competitor instead. An AI voice agent answers every call, qualifies the lead, books the appointment, and sends a follow-up text. All without you lifting a finger.",
     deliverables: [
       "24/7 call answering — no voicemail, no missed leads",
@@ -23,6 +24,7 @@ const services = [
     href: '/services/reputation/',
     setupLabel: pricing.reputation.setupLabel,
     monthlyLabel: pricing.reputation.monthlyLabel,
+    roiAnchor: pricing.reputation.roiAnchor,
     description: "Most satisfied clients never leave a review — not because they don't want to, but because no one asked at the right moment. We build the automated system that does: post-transaction requests, gentle follow-ups, and a monitoring dashboard so you always know what's being said about your business.",
     deliverables: [
       "Automated review request sequences via SMS and email",
@@ -38,6 +40,7 @@ const services = [
     href: '/services/aeo-seo/',
     setupLabel: pricing.aeoSeo.oneTimeLabel + " one-time",
     monthlyLabel: pricing.aeoSeo.monthlyLabel,
+    roiAnchor: pricing.aeoSeo.roiAnchor,
     description: "ChatGPT, Google AI Overview, and Perplexity are answering buyer questions directly — and citing specific sources. We structure your content and schema so your business is the answer those AI engines pull. Combined with local AEO fundamentals, this is how you stay visible as search behavior shifts.",
     deliverables: [
       "AEO content audit and structured data implementation",
@@ -75,6 +78,7 @@ const services = [
                 <a href={service.href}>{service.name}</a>
               </h3>
               <p class="service-description">{service.description}</p>
+              <p class="service-roi">{service.roiAnchor}</p>
 
               <ul class="service-deliverables">
                 {service.deliverables.map(item => (
@@ -211,6 +215,14 @@ const services = [
     color: var(--color-text-muted);
     max-width: 62ch;
     margin-bottom: 1.5rem;
+  }
+
+  .service-roi {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 62ch;
   }
 
   .service-deliverables {
