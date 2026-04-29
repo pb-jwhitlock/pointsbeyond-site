@@ -63,6 +63,19 @@ import { formConfig, siteConfig } from '../data/config';
         </div>
       </div>
 
+      <div class="form-row form-row-2">
+        <div class="form-field">
+          <label for="website">Business Website <span class="optional">optional</span></label>
+          <input
+            type="url"
+            id="website"
+            name="website"
+            autocomplete="url"
+            placeholder="https://yourbusiness.com"
+          />
+        </div>
+      </div>
+
       <div class="form-field">
         <fieldset class="form-fieldset">
           <legend>Service interest <span class="optional">select all that apply</span></legend>
@@ -117,7 +130,7 @@ import { formConfig, siteConfig } from '../data/config';
     </form>
 
     <p class="form-success" id="form-success" hidden>
-      Thanks! I'll be in touch within one business day to schedule your consultation.
+      Thanks! I'll be in touch within one business day to schedule your free consultation.
     </p>
 
     <script define:vars={{ endpoint: formConfig.endpoint }}>
@@ -137,6 +150,7 @@ import { formConfig, siteConfig } from '../data/config';
           email: form.email.value,
           phone: form.phone.value,
           company_name: form.business_name.value,
+          website: form.website.value,
           message: form.message.value,
           source: "pointsbeyond.ai contact form",
           tags: ["consultation-request", "pointsbeyond-site"],
