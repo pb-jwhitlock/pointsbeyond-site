@@ -204,7 +204,7 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 4. Disable Pages on `pb-jwhitlock/points-beyond-frontend-1`
 5. Archive (do not delete): `points-beyond-frontend-1`, `points-beyond` (old Astro rebuild)
 
-## Current Status (April 28, 2026)
+## Current Status (April 29, 2026)
 
 | Item | Status |
 |---|---|
@@ -214,7 +214,7 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 | Supporting pages (contact, privacy, terms, 3× service) | ✅ |
 | Schema: FAQPage, ProfessionalService, LocalBusiness, Service | ✅ |
 | Sitemap + robots.txt | ✅ |
-| Contact form → GHL webhook (JSON fetch) | ✅ |
+| Contact form → GHL webhook (JSON fetch) | ✅ — live, field mapping confirmed |
 | GitHub repo `pb-jwhitlock/pointsbeyond-site` created | ✅ |
 | GitHub Actions deploy workflow | ✅ — triggers on push to main |
 | GitHub Pages enabled on new repo | ✅ |
@@ -227,28 +227,29 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 | Emergency call routing language — Hero, Services, FAQ | ✅ |
 | SEO reweaved alongside AEO in copy and meta tags | ✅ |
 | Hero right column — service stack with pill rows | ✅ |
+| Contact form field polish — all 5 required, GHL payload aligned | ✅ |
+| Unused hero-graphic.png deleted | ✅ |
 | Calendar embed (contact page) | ❌ — placeholder in place, add when ready |
 | Service pages full copy | ❌ — placeholder pages, schema crawlable |
 
 **Live site**: https://pointsbeyond.ai — Astro 6 rebuild, fully deployed.
 
-## Last Session Summary (April 28, 2026)
+## Last Session Summary (April 29, 2026)
 
-- Replaced hero right-column sine wave SVG with a compact service stack: three pill rows (icon + service name left, faint italic tagline clause right — "Never miss a call." / "Own your reputation." / "Be the answer."), grid column narrowed to 340px, stack vertically centered via `align-items: stretch` + `display: flex; align-items: center` on `.hero-visual`
-- Added emergency call detection and routing language sitewide: new sentence in Voice AI service description, updated `voiceAI.roiAnchor` in `pricing.ts`, new FAQ entry ("Can the AI handle emergency or urgent calls differently?") inserted as Q2, hero subheading appended "…including emergency call detection and routing."
-- Rewove SEO back into copy as supporting context for AEO: AEO Foundation description rewritten, FAQ AEO answer updated ("Traditional SEO gets you ranked… We build both into every engagement."), `index.astro` title/description now say "AEO + SEO."
+- Completed GHL webhook integration: added Business website field, made all five core fields required (name, email, phone, business name, website), removed all "optional" labels from those fields
+- Aligned JS payload with GHL CRM field mapping: split `full_name` → `firstName`/`lastName`, normalized phone to E.164 (`+1XXXXXXXXXX`), added `service_interest` from checkboxes, added `sms_consent`, removed unused `hero-graphic.png`
+- Updated success message to "free consultation"; confirmed full payload structure matches GHL custom fields
 
 ## Next Steps
 
 **Resume here:**
-- Review the live hero on desktop — verify pill stack is vertically centered against the headline/sub/CTAs column
+- Test a live form submission end-to-end: verify all fields land correctly in GHL CRM (check firstName, lastName, phone format, service_interest, sms_consent)
 - Terms page attorney sign-off before treating as final
 
 **Soon:**
 - Add calendar embed to `/contact/` (GHL calendar, Calendly, etc. — slot is ready in contact.astro)
 - Add chat widget embed to `Layout.astro` (slot is ready near `</body>`)
 - Expand service pages from placeholder to full copy (`/services/voice-ai/`, `/services/reputation/`, `/services/aeo-seo/`)
-- Delete unused `public/hero-graphic.png` (500K, unreferenced)
 
 ## Known Issues / Notes
 
@@ -259,5 +260,6 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 - Terms page updated with 30-day satisfaction window — needs attorney sign-off before treating as final
 - Favicon: SVG now first in `<link>` order (`Layout.astro` lines 95–100); all files present in `public/`; hard refresh required after deploy
 - Service branding: "AEO + SEO" → "AEO Foundation" in `pricing.ts`; all visible text updated; URLs (`/services/aeo-seo/`) and code identifiers (`pricing.aeoSeo`) intentionally unchanged
-- Hero: sine wave SVG replaced with service pill stack (`Hero.astro` lines 27–54). `public/hero-graphic.png` present but unreferenced — safe to delete.
+- Hero: sine wave SVG replaced with service pill stack (`Hero.astro` lines 27–54)
 - FAQ AEO answer reads "Traditional SEO gets you ranked… We build both into every engagement." — SEO intentionally reintroduced as supporting context for AEO
+- GHL payload field names: `firstName`, `lastName`, `email`, `phone` (E.164), `company_name`, `website`, `service_interest`, `message`, `sms_consent`, `source`, `tags`
