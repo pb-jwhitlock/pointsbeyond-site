@@ -41,12 +41,13 @@ import { formConfig, siteConfig } from '../data/config';
 
       <div class="form-row form-row-2">
         <div class="form-field">
-          <label for="phone">Phone <span class="optional">optional</span></label>
+          <label for="phone">Phone <span class="required">*</span></label>
           <input
             type="tel"
             id="phone"
             name="phone"
             autocomplete="tel"
+            required
             placeholder="(703) 555-0100"
           />
         </div>
