@@ -53,12 +53,13 @@ import { formConfig, siteConfig } from '../data/config';
         </div>
 
         <div class="form-field">
-          <label for="business_name">Business name</label>
+          <label for="business_name">Business name <span class="required">*</span></label>
           <input
             type="text"
             id="business_name"
             name="business_name"
             autocomplete="organization"
+            required
             placeholder="Acme Realty"
           />
         </div>
@@ -66,12 +67,13 @@ import { formConfig, siteConfig } from '../data/config';
 
       <div class="form-row form-row-2">
         <div class="form-field">
-          <label for="website">Business Website</label>
+          <label for="website">Business website <span class="required">*</span></label>
           <input
             type="url"
             id="website"
             name="website"
             autocomplete="url"
+            required
             placeholder="https://yourbusiness.com"
           />
         </div>
