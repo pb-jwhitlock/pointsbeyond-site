@@ -148,13 +148,29 @@ import { formConfig, siteConfig } from '../data/config';
         btn.textContent = 'Sending...';
         error.hidden = true;
 
+        const nameParts = form.name.value.trim().split(' ');
+        const firstName = nameParts[0] || '';
+        const lastName = nameParts.slice(1).join(' ') || '';
+
+        const rawPhone = form.phone.value.replace(/\D/g, '');
+        const phone = '+1' + rawPhone.slice(-10);
+
+        const services = Array.from(
+          form.querySelectorAll('input[name="service[]"]:checked')
+        ).map(cb => cb.value);
+
+        const smsConsent = form.sms_consent.checked ? 'yes' : 'no';
+
         const data = {
-          full_name: form.name.value,
+          firstName,
+          lastName,
           email: form.email.value,
-          phone: form.phone.value,
+          phone,
           company_name: form.business_name.value,
           website: form.website.value,
+          service_interest: services.join(', '),
           message: form.message.value,
+          sms_consent: smsConsent,
           source: "pointsbeyond.ai contact form",
           tags: ["consultation-request", "pointsbeyond-site"],
         };
