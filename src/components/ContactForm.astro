@@ -52,13 +52,13 @@ import { formConfig, siteConfig } from '../data/config';
         </div>
 
         <div class="form-field">
-          <label for="website">Website URL <span class="optional">optional</span></label>
+          <label for="business_name">Business name <span class="optional">optional</span></label>
           <input
-            type="url"
-            id="website"
-            name="website"
-            autocomplete="url"
-            placeholder="https://yourbusiness.com"
+            type="text"
+            id="business_name"
+            name="business_name"
+            autocomplete="organization"
+            placeholder="Acme Realty"
           />
         </div>
       </div>
@@ -111,13 +111,14 @@ import { formConfig, siteConfig } from '../data/config';
         <p class="form-note">We respond within one business day.</p>
       </div>
 
-      <p class="form-success" id="form-success" hidden>
-        Message sent — we'll be in touch within one business day.
-      </p>
       <p class="form-error" id="form-error" hidden>
-        Something went wrong. Please email us at <a href="mailto:info@pointsbeyond.ai">info@pointsbeyond.ai</a>.
+        Something went wrong — please email me directly at <a href="mailto:info@pointsbeyond.ai">info@pointsbeyond.ai</a>.
       </p>
     </form>
+
+    <p class="form-success" id="form-success" hidden>
+      Thanks! I'll be in touch within one business day to schedule your consultation.
+    </p>
 
     <script define:vars={{ endpoint: formConfig.endpoint }}>
       const form = document.getElementById('contact-form');
@@ -128,19 +129,17 @@ import { formConfig, siteConfig } from '../data/config';
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         btn.disabled = true;
-        btn.textContent = 'Sending…';
-        success.hidden = true;
+        btn.textContent = 'Sending...';
         error.hidden = true;
 
         const data = {
-          name: form.name.value,
+          full_name: form.name.value,
           email: form.email.value,
           phone: form.phone.value,
-          website: form.website.value,
-          services: Array.from(form.querySelectorAll('input[name="service[]"]:checked')).map(el => el.value).join(', '),
+          company_name: form.business_name.value,
           message: form.message.value,
-          sms_consent: form.sms_consent.checked ? 'yes' : 'no',
-          source: window.location.href,
+          source: "pointsbeyond.ai contact form",
+          tags: ["consultation-request", "pointsbeyond-site"],
         };
 
         try {
@@ -151,10 +150,8 @@ import { formConfig, siteConfig } from '../data/config';
           });
 
           if (res.ok) {
-            form.reset();
+            form.hidden = true;
             success.hidden = false;
-            btn.textContent = 'Send message';
-            btn.disabled = false;
           } else {
             throw new Error('Non-OK response');
           }
