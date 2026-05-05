@@ -204,7 +204,7 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 4. Disable Pages on `pb-jwhitlock/points-beyond-frontend-1`
 5. Archive (do not delete): `points-beyond-frontend-1`, `points-beyond` (old Astro rebuild)
 
-## Current Status (April 29, 2026)
+## Current Status (May 4, 2026)
 
 | Item | Status |
 |---|---|
@@ -229,16 +229,18 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 | Hero right column — service stack with pill rows | ✅ |
 | Contact form field polish — all 5 required, GHL payload aligned | ✅ |
 | Unused hero-graphic.png deleted | ✅ |
+| External tracking script — all pages | ✅ — `auth.pointsbeyond.ai/js/external-tracking.js` |
 | Calendar embed (contact page) | ❌ — placeholder in place, add when ready |
 | Service pages full copy | ❌ — placeholder pages, schema crawlable |
+| Live GHL form submission test | ❌ — pending manual verification |
 
 **Live site**: https://pointsbeyond.ai — Astro 6 rebuild, fully deployed.
 
-## Last Session Summary (April 29, 2026)
+## Last Session Summary (May 4, 2026)
 
-- Completed GHL webhook integration: added Business website field, made all five core fields required (name, email, phone, business name, website), removed all "optional" labels from those fields
-- Aligned JS payload with GHL CRM field mapping: split `full_name` → `firstName`/`lastName`, normalized phone to E.164 (`+1XXXXXXXXXX`), added `service_interest` from checkboxes, added `sms_consent`, removed unused `hero-graphic.png`
-- Updated success message to "free consultation"; confirmed full payload structure matches GHL custom fields
+- Completed contact form field polish: added website field to JS payload, made all five core fields required (name, email, phone, business name, website), updated success message to "free consultation"
+- Added external tracking script (`auth.pointsbeyond.ai/js/external-tracking.js`, tracking ID `tk_ef421ed1a3b24941ac43f2ef59f4311a`) to every page via `Layout.astro` just before `</body>`
+- Cleaned up repo: deleted committed `hero-graphic.png` (500KB, unused)
 
 ## Next Steps
 
@@ -248,7 +250,7 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 
 **Soon:**
 - Add calendar embed to `/contact/` (GHL calendar, Calendly, etc. — slot is ready in contact.astro)
-- Add chat widget embed to `Layout.astro` (slot is ready near `</body>`)
+- Add chat widget embed to `Layout.astro` (slot is ready near `</body>`, above tracking script)
 - Expand service pages from placeholder to full copy (`/services/voice-ai/`, `/services/reputation/`, `/services/aeo-seo/`)
 
 ## Known Issues / Notes
@@ -263,3 +265,4 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 - Hero: sine wave SVG replaced with service pill stack (`Hero.astro` lines 27–54)
 - FAQ AEO answer reads "Traditional SEO gets you ranked… We build both into every engagement." — SEO intentionally reintroduced as supporting context for AEO
 - GHL payload field names: `firstName`, `lastName`, `email`, `phone` (E.164), `company_name`, `website`, `service_interest`, `message`, `sms_consent`, `source`, `tags`
+- External tracking: script tag in `Layout.astro` lines 119–123, just before `</body>`; tracking ID `tk_ef421ed1a3b24941ac43f2ef59f4311a`
