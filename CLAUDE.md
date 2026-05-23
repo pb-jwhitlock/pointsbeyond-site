@@ -204,7 +204,7 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 4. Disable Pages on `pb-jwhitlock/points-beyond-frontend-1`
 5. Archive (do not delete): `points-beyond-frontend-1`, `points-beyond` (old Astro rebuild)
 
-## Current Status (May 4, 2026)
+## Current Status (May 22, 2026)
 
 | Item | Status |
 |---|---|
@@ -236,11 +236,11 @@ Push to `main` → GitHub Actions builds Astro → deploys to GitHub Pages.
 
 **Live site**: https://pointsbeyond.ai — Astro 6 rebuild, fully deployed.
 
-## Last Session Summary (May 4, 2026)
+## Last Session Summary (May 22, 2026)
 
-- Completed contact form field polish: added website field to JS payload, made all five core fields required (name, email, phone, business name, website), updated success message to "free consultation"
-- Added external tracking script (`auth.pointsbeyond.ai/js/external-tracking.js`, tracking ID `tk_ef421ed1a3b24941ac43f2ef59f4311a`) to every page via `Layout.astro` just before `</body>`
-- Cleaned up repo: deleted committed `hero-graphic.png` (500KB, unused)
+- Session opened with `/update-context` only — no code changes this session
+- Site remains fully deployed at https://pointsbeyond.ai with all prior work intact
+- Context refreshed; next action remains live GHL form submission test
 
 ## Next Steps
 
