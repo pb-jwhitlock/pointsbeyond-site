@@ -183,15 +183,19 @@ import { formConfig, siteConfig } from '../data/config';
           });
 
           const responseBody = await res.text();
-          console.log('Webhook response:', res.status, responseBody);
+          console.log('DEBUG: res.ok=', res.ok, 'status=', res.status);
+          console.log('DEBUG: responseBody=', responseBody);
 
-          if (responseBody.includes('Success') || res.ok) {
+          if (res.ok || responseBody.includes('Success')) {
+            console.log('DEBUG: SUCCESS - hiding form');
             form.hidden = true;
             success.hidden = false;
           } else {
-            throw new Error('Webhook rejected: ' + responseBody);
+            console.log('DEBUG: FAILURE - showing error');
+            throw new Error('Webhook rejected');
           }
-        } catch {
+        } catch (err) {
+          console.error('DEBUG: CATCH block -', err.message);
           error.hidden = false;
           btn.textContent = 'Send message';
           btn.disabled = false;
