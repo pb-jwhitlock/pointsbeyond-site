@@ -28,11 +28,11 @@ The system generates a webhook URL. COPY THIS URL for your form config.
 1. Click Add Action
 2. Select: Create or Update Contact Record
 3. Map fields:
-   - First Name = {{first_name}}
-   - Last Name = {{last_name}}
+   - First Name = {{firstName}}
+   - Last Name = {{lastName}}
    - Email = {{email}}
    - Phone = {{phone}}
-   - Organization = {{organization}}
+   - Organization = {{company_name}}
    - Website = {{website}}
 4. Click Save Action
 
@@ -45,7 +45,7 @@ The system generates a webhook URL. COPY THIS URL for your form config.
 3. To: {{email}}
 4. From: info@pointsbeyond.ai
 5. Subject: We received your inquiry
-6. Body: Hi {{first_name}}, Thank you for contacting us. We will be in touch within one business day.
+6. Body: Hi {{firstName}}, Thank you for contacting us. We will be in touch within one business day.
 7. Click Save Action
 
 ---
@@ -55,8 +55,8 @@ The system generates a webhook URL. COPY THIS URL for your form config.
 1. Click Add Action
 2. Select: Send Email
 3. To: info@pointsbeyond.ai
-4. Subject: [LEAD] {{first_name}} {{last_name}} — {{organization}}
-5. Body: {{first_name}} {{last_name}} | {{email}} | {{phone}} | {{organization}}
+4. Subject: [LEAD] {{firstName}} {{lastName}} — {{company_name}}
+5. Body: {{firstName}} {{lastName}} | {{email}} | {{phone}} | {{company_name}}
 6. Click Save Action
 
 ---
