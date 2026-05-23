@@ -182,11 +182,14 @@ import { formConfig, siteConfig } from '../data/config';
             body: JSON.stringify(data),
           });
 
-          if (res.ok) {
+          const responseBody = await res.text();
+          console.log('Webhook response:', res.status, responseBody);
+
+          if (responseBody.includes('Success') || res.ok) {
             form.hidden = true;
             success.hidden = false;
           } else {
-            throw new Error('Non-OK response');
+            throw new Error('Webhook rejected: ' + responseBody);
           }
         } catch {
           error.hidden = false;
