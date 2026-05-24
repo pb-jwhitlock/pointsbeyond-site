@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pointsbeyond.ai/sitemap-index.xml
