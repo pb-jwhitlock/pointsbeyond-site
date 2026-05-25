@@ -11,6 +11,6 @@ export const siteConfig = {
 } as const;
 
 export const formConfig = {
-  endpoint: "https://services.leadconnectorhq.com/hooks/kCwBYibHdMHe4b5OQqHh/webhook-trigger/c01a8798-360d-456e-b466-22864d404c9c",
+  endpoint: "https://services.leadconnectorhq.com/hooks/kCwBYibHdMHe4b5OQqHh/webhook-trigger/a6ca810c-1da6-42ca-8cd6-705ba638348e",
   method: "POST" as const,
 } as const;
