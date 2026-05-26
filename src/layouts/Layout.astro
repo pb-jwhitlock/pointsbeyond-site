@@ -56,6 +56,45 @@ const orgSchema = {
         "Search Engine Optimization",
       ],
       "sameAs": [siteConfig.social.linkedin],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "availableLanguage": "English",
+          "contactOption": "TollFree",
+          "areaServed": "US",
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "availableLanguage": "English",
+          "areaServed": "US",
+        },
+      ],
+      "potentialAction": {
+        "@type": "CommunicateAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${siteConfig.url}/#chat`,
+          "inLanguage": "en-US",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform",
+          ],
+        },
+        "name": "Chat with Points Beyond AI",
+        "description": "Start a live chat to ask about AI Voice Agents, Reputation Management, or AEO services",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      "url": siteConfig.url,
+      "name": siteConfig.name,
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".service-name", ".hero-tagline"],
+      },
     },
   ],
 };
@@ -116,7 +155,13 @@ const orgSchema = {
     </main>
     <Footer />
 
-    <!-- CHAT WIDGET SLOT: paste your chat embed script here (GHL, Intercom, Crisp, Tidio, etc.) -->
+    <!-- LeadConnector Chat Widget -->
+    <script
+      src="https://widgets.leadconnectorhq.com/loader.js"
+      data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+      data-widget-id="6a15b9c11ce15bb9e91d3f65"
+      async
+    ></script>
 
     <script
       src="https://auth.pointsbeyond.ai/js/external-tracking.js"
