@@ -32,3 +32,14 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v4
         id: deployment
+
+  purge-cache:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge Cloudflare cache
+        run: |
+          curl -s -X POST "https://api.cloudflare.com/client/v4/zones/4603d5bfe81b9fee030800d1d42ed680/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_CACHE_PURGE_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
