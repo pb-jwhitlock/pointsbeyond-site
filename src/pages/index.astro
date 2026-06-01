@@ -6,7 +6,6 @@ import Services from '../components/Services.astro';
 import Process from '../components/Process.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQ, { faqs } from '../components/FAQ.astro';
-import ContactForm from '../components/ContactForm.astro';
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -33,5 +32,13 @@ const faqSchema = {
   <Process />
   <Testimonials />
   <FAQ />
-  <ContactForm />
+  {/* ContactForm removed from homepage — SMS opt-in consolidated to /contact/ for A2P audit */}
+  <section class="section" id="contact">
+    <div class="container" style="text-align:center;padding:4rem 0;">
+      <p class="section-eyebrow">Get Started</p>
+      <h2 style="font-size:clamp(24px,3vw,40px);font-weight:800;margin-bottom:1rem;">Ready to capture every lead?</h2>
+      <p style="color:var(--color-text-muted);max-width:48ch;margin:0 auto 2rem;">Book a free 30-minute strategy call — we'll map your lead flow, show you what AI would fix, and give you a clear plan. No pitch, no pressure.</p>
+      <a href="/contact/" class="btn-primary">Book My Free Strategy Call →</a>
+    </div>
+  </section>
 </Layout>
