@@ -82,3 +82,7 @@ export const formConfig = {
 
 ---
 Last updated: June 1, 2026
+
+## Skills Library
+Repo: https://github.com/pb-jwhitlock/claude-skills
+To load a skill, share the raw URL or paste the SKILL.md content at the start of the session.
