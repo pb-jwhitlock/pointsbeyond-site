@@ -2,10 +2,13 @@
 
 ## Latest Status
 - **Styling**: ✅ Fixed and deployed (Node 22 required for Astro)
-- **Form Webhook**: Testing with latest URL — GHL URLs regenerating daily, needs stable solution
-- **LeadConnector Chat Widget**: ✅ Live — async script in `Layout.astro`, widget ID `6a15b9c11ce15bb9e91d3f65`
+- **Form Webhook**: ⚠️ ContactForm removed from homepage and /contact/ — SMS opt-in consolidated to chat widget only (A2P audit)
+- **LeadConnector Chat Widget**: ✅ Live — async script in `Layout.astro`, widget ID `6a15b9c11ce15bb9e91d3f65` — this is the sole SMS opt-in
 - **Schema Markup**: ✅ Extended — `contactPoint`, `CommunicateAction`, `WebSite/SpeakableSpecification` added to `orgSchema`
-- **Last Deployment**: May 26, 2026 — chat widget + schema markup live
+- **Favicon**: ✅ Points Beyond logo deployed — ICO, 16, 32, 180, 192, 512px PNGs in `public/`
+- **Nav + Footer Logo**: ✅ Replaced placeholder SVG "A" with actual Points Beyond logo image (`/favicon-180.png`)
+- **Cloudflare Auto-Purge**: ✅ GitHub Actions workflow purges Cloudflare automatically after every deploy
+- **Last Deployment**: June 1, 2026
 
 ## Current Config
 **File**: `src/data/config.ts`
@@ -24,6 +27,23 @@ export const formConfig = {
 - **Placement**: `Layout.astro` lines ~119–125, before external tracking script, using `async`
 - **Reference docs**: `docs/leadconnector-ga4-tracking.md`, `docs/leadconnector-widget-reference.md`
 
+## Cloudflare Auto-Purge
+- **Zone ID**: `4603d5bfe81b9fee030800d1d42ed680`
+- **Secret**: `CLOUDFLARE_CACHE_PURGE_TOKEN` stored in GitHub repo secrets
+- **Workflow**: `.github/workflows/deploy.yml` — `purge-cache` job runs after `deploy` job completes
+- No manual purging needed going forward
+
+## A2P SMS Audit Notes
+- `ContactForm.astro` removed from `index.astro` (homepage) and `contact.astro`
+- Single SMS opt-in is the LeadConnector chat widget on `/contact/`
+- `ContactForm.astro` file is preserved — can be restored after audit if needed
+- Homepage Get Started section replaced with CTA linking to `/contact/`
+
+## Astro CSS Scoping — Important
+- Component `<style>` blocks are scoped to that component only
+- Class names defined in `FAQ.astro` (e.g. `.faq-inner`) do NOT apply when used in page files
+- Solution: use inline styles or global CSS for cross-component layout
+
 ## Key Fixes (Prior Session — May 25, 2026)
 1. Added missing `siteConfig` export to `src/data/config.ts`
 2. Updated `package.json`: Node requirement from `>=22.12.0` to `>=18.0.0` (workflow compatibility)
@@ -33,33 +53,32 @@ export const formConfig = {
 
 ## Known Issues
 - GHL webhook URLs changing frequently (investigate affiliate/plan changes)
-- Form submissions need to be tested against current webhook URL
 - `ContactForm.astro` has `console.log('DEBUG: ...')` calls still in production — strip before treating form as final
 - `SpeakableSpecification` CSS selectors (`.service-name`, `.hero-tagline`) need verification against actual component class names
 
-## Last Session Summary (May 26, 2026)
-- Integrated LeadConnector chat widget into `Layout.astro` with async loading (widget ID `6a15b9c11ce15bb9e91d3f65`)
-- Extended `orgSchema` in `Layout.astro` with `contactPoint`, `CommunicateAction` potentialAction, and `WebSite/SpeakableSpecification` nodes for voice search / AEO
-- Created reference docs: `docs/leadconnector-ga4-tracking.md` (GA4 event setup) and `docs/leadconnector-widget-reference.md` (testing checklist + Core Web Vitals perf guide)
+## Last Session Summary (June 1, 2026)
+- Removed ContactForm from homepage and /contact/ for A2P SMS audit — chat widget on /contact/ is now sole opt-in
+- Added Points Beyond logo as favicon (all sizes) and replaced placeholder SVG "A" in nav and footer
+- Wired up Cloudflare auto-purge to GitHub Actions deploy workflow — no more manual purging needed
 
 ## Next Steps
 **Resume here:**
-1. Verify chat widget is visible on live site: https://pointsbeyond.ai (bubble bottom-right)
-2. Test live form submission end-to-end — verify all fields land in GHL CRM (`firstName`, `lastName`, `phone`, `service_interest`, `sms_consent`)
+1. Verify logo and favicon are rendering correctly on live site after latest deploy
+2. Add calendar embed to `/contact/` (slot ready in `contact.astro`)
 3. Investigate GHL webhook URL instability — consider a stable wrapper endpoint
-4. Strip `console.log('DEBUG: ...')` calls from `ContactForm.astro` before treating form as production-ready
+4. Strip `console.log('DEBUG: ...')` calls from `ContactForm.astro`
 5. Verify `SpeakableSpecification` CSS selectors match actual class names in `Hero.astro` / `Services.astro`
 
 **Soon:**
-- Add calendar embed to `/contact/` (slot ready in `contact.astro`)
 - Add GA4 (see `docs/leadconnector-ga4-tracking.md` for setup guide)
 - Expand service pages from placeholder to full copy (`/services/voice-ai/`, `/services/reputation/`, `/services/aeo-seo/`)
 - Terms page attorney sign-off
+- Deploy Cloudflare auto-purge workflow to lemair-tennis repo
 
 ## Build & Deploy
 - Build: `npm run build` (requires Node 22+)
-- Deploy: Push to `main` branch → GitHub Actions auto-deploys
+- Deploy: Push to `main` branch → GitHub Actions auto-deploys → Cloudflare cache auto-purged
 - Live site: https://pointsbeyond.ai
 
 ---
-Last updated: May 26, 2026
+Last updated: June 1, 2026
