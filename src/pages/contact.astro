@@ -19,12 +19,13 @@ import { siteConfig } from '../data/config';
       </div>
 
       <div class="calendar-slot">
-        <!-- Replace this div with your booking calendar embed code -->
-        <!-- Supported: GHL calendar, Calendly, Cal.com, Acuity, TidyCal, etc. -->
-        <!-- Example Calendly: <div class="calendly-inline-widget" data-url="https://calendly.com/your-link" style="min-width:320px;height:700px;"></div><script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script> -->
-        <div class="calendar-placeholder">
-          <p>Calendar booking coming soon — use the chat widget to reach us directly.</p>
-        </div>
+        <iframe
+          src="https://link.agency-vault.com/widget/bookings/points-beyond-ai"
+          style="width:100%;border:none;overflow:hidden;"
+          scrolling="no"
+          id="msgsndr-calendar"
+        ></iframe>
+        <script src="https://link.agency-vault.com/js/form_embed.js" type="text/javascript"></script>
       </div>
 
     </div>
@@ -74,29 +75,6 @@ import { siteConfig } from '../data/config';
 
   .calendar-slot {
     min-height: 300px;
-  }
-
-  .calendar-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 260px;
-    border: 1px dashed var(--color-border);
-    border-radius: 4px;
-    padding: 2rem;
-  }
-
-  .calendar-placeholder p {
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
-    text-align: center;
-    max-width: 40ch;
-  }
-
-  .calendar-placeholder a {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
   }
 
   .section-divider {
