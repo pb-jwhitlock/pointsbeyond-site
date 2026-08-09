@@ -11,7 +11,7 @@ export const pricing = {
     roiAnchor: "Never miss an emergency call — your AI answers, triages, and routes urgent leads before they call your competitor.",
   },
   reputation: {
-    name: "Reputation Management",
+    name: "Reputation Agent",
     setup: 750,
     monthly: 249,
     monthlyLabel: "Starting at $249/mo",
@@ -20,7 +20,7 @@ export const pricing = {
     roiAnchor: "One new 5-star review can be worth thousands in referrals",
   },
   aeoSeo: {
-    name: "AEO Foundation",
+    name: "Answer Engine Agent",
     oneTime: 2500,
     oneTimeLabel: "$2,500",
     monthly: 599,

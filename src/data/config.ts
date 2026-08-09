@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Points Beyond AI",
   url: "https://pointsbeyond.ai",
-  description: "AI services for small business: Voice AI Agents, Reputation Management, AEO/SEO",
+  description: "Points Beyond AI builds autonomous AI agents that answer every call, generate reviews, and get your business cited by ChatGPT and Perplexity. Fairfax County, VA.",
   founder: "John Whitlock",
   email: "john@pointsbeyond.ai",
   location: "Fairfax, Virginia",
